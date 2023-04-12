@@ -1,4 +1,4 @@
 class Runner < ApplicationRecord
-  belongs_to :coach_id
-  belongs_to :event_id
+  belongs_to :coach
+  belongs_to :event
 end
