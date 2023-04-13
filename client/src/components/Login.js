@@ -36,7 +36,7 @@ function Login() {
                     navigate(`/runners/${user.id}`)
                 })
             } else {
-                res.json().then(json => setErrors(Object.entries(json.errors)))
+                res.json().then(json => setErrors([json.error]))
             }
         }) 
     }
@@ -64,7 +64,8 @@ function Login() {
                 
                     <input type="submit" value="Log in" />
                 </form>
-                {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+                <br/>
+                {errors ? errors.map(error => <div key={error}>{error}</div>) :null}
             </div>
     )
 }
