@@ -13,24 +13,28 @@ import Events from './Events';
 
 function App() {
   const [runners, setRunners] = useState({})
+  const [errors, setErrors] = useState(false)
 
-  useEffect(() => {
-    fetch("/runners")
-    .then(r => r.json())
-    .then(data => {
-      setRunners(data);
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetch("/runners")
+  //   .then(res => {
+  //     if(res.ok){
+  //       res.json().then(setRunners)
+  //     }else {
+  //       res.json().then(data => setErrors(data.error))
+  //     }
+  //   })
+  // },[])
 
   return (
-    <div class="Welcome">
+    <div>
         <Header />
         <br/>
         <Routes>
           <Route path="/" element={<Welcome/>} />
           <Route path="/runners/new" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/runners" element={<Runner/>} />
+          <Route path="/runners" element={<Runner runners={runners}/>} />
           <Route path="/runners/*" element={<RunnerShow/>} />
           <Route path="/coaches" element={<Coaches/>} />
           <Route path="/coaches/*" element={<CoachesShow/>} />
