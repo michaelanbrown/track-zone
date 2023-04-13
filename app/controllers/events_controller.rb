@@ -12,6 +12,6 @@ class EventsController < ApplicationController
     private
     
     def event_params
-        params.permit(:full_name, :age, :photo)
+        params.permit(:name, :distance, :unit_of_measurement)
     end 
 end
