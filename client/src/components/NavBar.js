@@ -9,7 +9,7 @@ export default function NavBar ()  {
         <nav className="NavBar">
             <NavLink to="/">Welcome</NavLink>
             <br></br>
-            <NavLink to="/users/new">Signup</NavLink>
+            <NavLink to="/runners/new">Signup</NavLink>
             <br></br>
             <NavLink to="/login">Login</NavLink>
             <br></br>
