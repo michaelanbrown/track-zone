@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-function Runner({runners}) {
+function Runner() {
 
         return (
             <div>Runner</div>
