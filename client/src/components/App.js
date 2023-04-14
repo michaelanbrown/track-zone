@@ -10,10 +10,11 @@ import RunnerShow from './RunnerShow';
 import Coaches from './Coaches';
 import CoachesShow from './CoachesShow';
 import Events from './Events';
+import { RunnerProvider } from '../context/Runner';
 
 function App() {
-  const [runners, setRunners] = useState({})
-  const [errors, setErrors] = useState(false)
+  // const [runners, setRunners] = useState({})
+  // const [errors, setErrors] = useState(false)
 
   // useEffect(() => {
   //   fetch("/runners")
@@ -25,22 +26,24 @@ function App() {
   //     }
   //   })
   // },[])
+  
 
   return (
-    <div>
-        <Header />
-        <br/>
-        <Routes>
-          <Route path="/" element={<Welcome/>} />
-          <Route path="/runners/new" element={<Signup/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/runners" element={<Runner runners={runners}/>} />
-          <Route path="/runners/*" element={<RunnerShow/>} />
-          <Route path="/coaches" element={<Coaches/>} />
-          <Route path="/coaches/*" element={<CoachesShow/>} />
-          <Route path="/events" element={<Events/>} />
-        </Routes>
-    </div>
+    <main>
+        <RunnerProvider>
+        <Header/>
+          <Routes>
+            <Route path="/" element={<Welcome/>} />
+            <Route path="/runners/new" element={<Signup/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/runners" element={<Runner/>} />
+            <Route path="/runners/*" element={<RunnerShow/>} />
+            <Route path="/coaches" element={<Coaches/>} />
+            <Route path="/coaches/*" element={<CoachesShow/>} />
+            <Route path="/events" element={<Events/>} />
+          </Routes>
+        </RunnerProvider>
+    </main>
   );
 }
 

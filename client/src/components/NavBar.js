@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import './App.css';
+import { UserContext } from '../context/Runner';
 
 export default function NavBar ()  {
 
+    const { runners, setRunners } = useContext(UserContext);
+
+    // function handleLogin() {
+    //   if (user) {
+    //     // setUser(null);
+    //   } else {
+    //     // setUser(defaultUser);
+    //   }
+    // }
 
     return (
         <nav className="NavBar">
