@@ -1,16 +1,18 @@
 class ApplicationController < ActionController::API
+  before_action :authenticate_user
+  
   include ActionController::Cookies
   
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) # memoization
+    @current_user ||= Runner.find_by_id(session[:user_id])
   end
 
   private
 
-  def authenticate_user # we are checking if a user is logged in only
+  def authenticate_user
     render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_user
   end
 
