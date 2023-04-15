@@ -8,6 +8,12 @@ class ApplicationController < ActionController::API
     @current_user ||= User.find_by_id(session[:user_id]) # memoization
   end
 
+  private
+
+  def authenticate_user # we are checking if a user is logged in only
+    render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_user
+  end
+
   def render_unprocessable_entity_response(exception)
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
   end
