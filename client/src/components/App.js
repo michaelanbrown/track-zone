@@ -12,21 +12,21 @@ import CoachesShow from './CoachesShow';
 import Events from './Events';
 import { UserContext } from '../context/Runner';
 
-
 function App() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [runners, setRunners] = useState({})
   const [errors, setErrors] = useState(false)
   useEffect(() => {
-      fetch("/runners")
-      .then(res => {
-        if(res.ok){
-          res.json().then(setRunners)
-        } else {
-          res.json().then(data => setErrors(data.error))
-        }
-      })
-    },[])
+    fetch("/authorized_user")
+    .then((res) => {
+      if (res.ok) {
+        res.json()
+        .then((user) => {
+          setCurrentUser(user);
+        });
+      }
+    })
+  },[])
 
     console.log(currentUser)
 
