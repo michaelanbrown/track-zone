@@ -6,18 +6,18 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def current_user
-    @current_user ||= Runner.find_by_id(session[:user_id])
+  def current_runner
+    @current_runner ||= Runner.find_by_id(session[:user_id])
   end
 
   private
 
   def authenticate_user
-    render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_user
+    render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_runner
   end
 
   def is_authorized? 
-    permitted = current_user.admin? 
+    permitted = current_runner.admin? 
     render json: { errors: {User: "does not have admin permissions"}}, status: :forbidden unless permitted 
   end
 

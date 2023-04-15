@@ -7,8 +7,7 @@ class RunnersController < ApplicationController
     end
 
     def show 
-        runner = Runner.find(params[:id])
-        render json: runner, status: :ok
+        render json: current_runner, status: :ok
     end
 
     def create
