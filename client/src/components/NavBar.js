@@ -18,17 +18,17 @@ export default function NavBar ()  {
 
     return (
         <nav className="NavBar">
-            <NavLink to="/">Welcome</NavLink>
+            <NavLink className="inactive" activeclassname="active" to="/">Welcome</NavLink>
             { currentUser ? null :<br />}
-            { currentUser ? null : <NavLink to="/runners/new">Signup</NavLink>}
+            { currentUser ? null : <NavLink className="inactive" activeclassname="active" to="/runners/new">Signup</NavLink>}
             <br></br>
-            { currentUser ? <button onClick={handleLogOut}>Logout</button> : <button to="/login">Login</button>}
+            { currentUser ? <button className="bttn" onClick={handleLogOut}>Logout</button> : <NavLink className="inactive" activeclassname="active" to="/login">Login</NavLink>}
             <br></br>
-            <NavLink to="/runners">Runners</NavLink>
+            <NavLink className="inactive" activeclassname="active" to="/runners">Runners</NavLink>
             <br></br>
-            <NavLink to="/coaches">Coaches</NavLink>
+            <NavLink className="inactive" activeclassname="active" to="/coaches">Coaches</NavLink>
             <br></br>
-            <NavLink to="/events">Events</NavLink>
+            <NavLink className="inactive" activeclassname="active" to="/events">Events</NavLink>
         </nav>
     )
 }
