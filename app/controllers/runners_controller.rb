@@ -1,4 +1,7 @@
 class RunnersController < ApplicationController
+    skip_before_action :authenticate_user, only: [:create]
+
+    
     def index
         render json: Runner.all, status: :ok
     end
