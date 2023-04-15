@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :authenticate_user
-  
+
   include ActionController::Cookies
   
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
@@ -14,6 +14,11 @@ class ApplicationController < ActionController::API
 
   def authenticate_user
     render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_user
+  end
+
+  def is_authorized? 
+    permitted = current_user.admin? 
+    render json: { errors: {User: "does not have admin permissions"}}, status: :forbidden unless permitted 
   end
 
   def render_unprocessable_entity_response(exception)
