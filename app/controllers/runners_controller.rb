@@ -20,6 +20,6 @@ class RunnersController < ApplicationController
     private 
 
     def runner_params
-        params.permit(:username, :email, :password, :full_name, :age, :photo, :coach_id, :event_id)
+        params.permit(:username, :email, :password, :full_name, :age, :photo, :coach_id, :event_id, :admin)
     end 
 end

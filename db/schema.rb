@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2023_04_12_030236) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coach_id"], name: "index_runners_on_coach_id"

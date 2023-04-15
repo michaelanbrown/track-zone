@@ -4,6 +4,7 @@ import { UserContext } from '../context/Runner';
 
 function RunnerShow() {
     const { runners, setRunners } = useContext(UserContext);
+    console.log(runners)
 
         return (
             <div>RunnerShow</div>
