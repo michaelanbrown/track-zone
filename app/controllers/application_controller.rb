@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def current_runner
-    @current_runner ||= Runner.find_by_id(session[:runner_id])
+    @current_runner ||= Runner.find_by(id: session[:runner_id])
   end
 
   private

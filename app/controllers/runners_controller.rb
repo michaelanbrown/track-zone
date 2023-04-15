@@ -6,10 +6,6 @@ class RunnersController < ApplicationController
         render json: Runner.all, status: :ok
     end
 
-    def show 
-        render json: current_runner, status: :ok
-    end
-
     def create
         runner = Runner.create!(runner_params)
         session[:runner_id] = runner.id

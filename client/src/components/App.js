@@ -22,7 +22,7 @@ function App() {
       .then(res => {
         if(res.ok){
           res.json().then(setRunners)
-        }else {
+        } else {
           res.json().then(data => setErrors(data.error))
         }
       })
