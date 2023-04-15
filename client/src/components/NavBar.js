@@ -4,16 +4,7 @@ import './App.css';
 import { UserContext } from '../context/Runner';
 
 export default function NavBar ()  {
-
-    const { runners, setRunners } = useContext(UserContext);
-
-    // function handleLogin() {
-    //   if (user) {
-    //     // setUser(null);
-    //   } else {
-    //     // setUser(defaultUser);
-    //   }
-    // }
+    const { currentUser, setCurrentUser } = useContext(UserContext);
 
     return (
         <nav className="NavBar">

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate_user
+  before_action :authenticate_runner
 
   include ActionController::Cookies
   
@@ -7,12 +7,12 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def current_runner
-    @current_runner ||= Runner.find_by_id(session[:user_id])
+    @current_runner ||= Runner.find_by_id(session[:runner_id])
   end
 
   private
 
-  def authenticate_user
+  def authenticate_runner
     render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_runner
   end
 

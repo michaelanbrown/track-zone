@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user, only: [:create, :destroy]
-  
+  skip_before_action :authenticate_runner, only: [:create, :destroy]
+
     def create
-      user = Runner.find_by_username(params[:username])
-      if user&.authenticate(params[:password])
-        session[:runner_id] = user.id
-        render json: user, status: :ok
+      runner = Runner.find_by_username(params[:username])
+      if runner&.authenticate(params[:password])
+        session[:runner_id] = runner.id
+        render json: runner, status: :ok
       else 
         render json: { error: "Invalid Credentials" }, status: :unauthorized
       end

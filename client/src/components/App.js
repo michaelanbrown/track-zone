@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { Routes, Route } from "react-router-dom";
 import Header from './Header';
 import Welcome from './Welcome';
@@ -10,9 +10,11 @@ import RunnerShow from './RunnerShow';
 import Coaches from './Coaches';
 import CoachesShow from './CoachesShow';
 import Events from './Events';
-import { RunnerProvider } from '../context/Runner';
+import { UserContext } from '../context/Runner';
+
 
 function App() {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const [runners, setRunners] = useState({})
   const [errors, setErrors] = useState(false)
   useEffect(() => {
@@ -25,11 +27,11 @@ function App() {
         }
       })
     },[])
-  
+
+    console.log(currentUser)
 
   return (
     <main>
-        <RunnerProvider>
         <Header/>
           <Routes>
             <Route path="/" element={<Welcome/>} />
@@ -41,7 +43,6 @@ function App() {
             <Route path="/coaches/*" element={<CoachesShow/>} />
             <Route path="/events" element={<Events/>} />
           </Routes>
-        </RunnerProvider>
     </main>
   );
 }
