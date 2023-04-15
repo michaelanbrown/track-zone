@@ -7,7 +7,7 @@ function RunnerShow() {
     console.log(currentUser)
 
         return (
-            <div>RunnerShow</div>
+            <div>{currentUser.full_name}</div>
     )
 }
 
