@@ -3,8 +3,8 @@ import './App.css';
 import { UserContext } from '../context/Runner';
 
 function RunnerShow() {
-    const { runners, setRunners } = useContext(UserContext);
-    console.log(runners)
+    const { currentUser, setCurrentUser } = useContext(UserContext);
+    console.log(currentUser)
 
         return (
             <div>RunnerShow</div>

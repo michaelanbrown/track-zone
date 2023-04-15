@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState, useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import { UserContext } from '../context/Runner';
 
 function Login() {
+    const { currentUser, setCurrentUser } = useContext(UserContext);
+
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
         username: "",
@@ -33,6 +36,7 @@ function Login() {
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
+                    setCurrentUser(user)
                     navigate(`/runners/${user.id}`)
                 })
             } else {

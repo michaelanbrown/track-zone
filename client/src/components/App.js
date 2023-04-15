@@ -13,19 +13,18 @@ import Events from './Events';
 import { RunnerProvider } from '../context/Runner';
 
 function App() {
-  // const [runners, setRunners] = useState({})
-  // const [errors, setErrors] = useState(false)
-
-  // useEffect(() => {
-  //   fetch("/runners")
-  //   .then(res => {
-  //     if(res.ok){
-  //       res.json().then(setRunners)
-  //     }else {
-  //       res.json().then(data => setErrors(data.error))
-  //     }
-  //   })
-  // },[])
+  const [runners, setRunners] = useState({})
+  const [errors, setErrors] = useState(false)
+  useEffect(() => {
+      fetch("/runners")
+      .then(res => {
+        if(res.ok){
+          res.json().then(setRunners)
+        }else {
+          res.json().then(data => setErrors(data.error))
+        }
+      })
+    },[])
   
 
   return (
