@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import './App.css';
 import { UserContext } from '../context/Runner';
 
 export default function NavBar ()  {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const navigate = useNavigate();
     const handleLogOut = () => {
         fetch(`/logout`, {
           method:"DELETE"
@@ -12,6 +13,7 @@ export default function NavBar ()  {
         .then(res =>{
           if(res.ok){
             setCurrentUser(false)
+            navigate(`/`)
           }
         })
       }
