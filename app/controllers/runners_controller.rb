@@ -12,9 +12,15 @@ class RunnersController < ApplicationController
 
     def create
         runner = Runner.create!(runner_params)
-        session[:runner_id] = runner.id
+        # session[:runner_id] = runner.id
         render json: runner, status: :ok
     end
+
+    # def destroy
+    #     runner = Runner.find(params[:id])
+    #     runner.destroy
+    #     head :no_content 
+    # end 
 
     private 
 

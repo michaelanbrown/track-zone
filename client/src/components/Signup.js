@@ -7,30 +7,30 @@ function Signup() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
-        name:'',
+        full_name:'',
         username: '',
         email:'',
         password:'',
         age: '',
         photo: '',
-        coach: '',
-        event: '',
+        coach_id: '',
+        event_id: '',
         admin: false
     })
-    const {name, username, email, password, age, photo, coach, event} = formData
+    const {full_name, username, email, password, age, photo, coach_id, event_id} = formData
     const navigate = useNavigate();
 
     function onSubmit(e){
         e.preventDefault()
         const user = {
-            name,
+            full_name,
             username,
             email,
             password,
             age,
             photo,
-            coach,
-            event
+            coach_id,
+            event_id
         }   
         fetch(`/runners`,{
           method:'POST',
@@ -44,7 +44,7 @@ function Signup() {
                     navigate(`/runners/${user.id}`)
                 })
             }else {
-                res.json().then(json => setErrors(Object.entries(json.errors)))
+                res.json().then(json => setErrors([json.error]))
             }
         })
        
@@ -72,15 +72,15 @@ function Signup() {
             Tell us more about yourself!
             <br/>
             <br/>
-            Full Name: <input type='text' name='name' value={name} onChange={handleChange} />
+            Full Name: <input type='text' name='full_name' value={full_name} onChange={handleChange} />
             <br/>
             Age: <input type='text' name='age' value={age} onChange={handleChange} />
             <br/>
             Photo Link: <input type='text' name='photo' value={photo} onChange={handleChange} />
             <br/>
-            Coach: <input type='text' name='coach' value={coach} onChange={handleChange} />
+            Coach: <input type='text' name='coach_id' value={coach_id} onChange={handleChange} />
             <br/>
-            Latest Event: <input type='text' name='event' value={event} onChange={handleChange} />
+            Latest Event: <input type='text' name='event_id' value={event_id} onChange={handleChange} />
             <br/>
             <input type='submit' value='Sign up!' />
         </form>
