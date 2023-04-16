@@ -50,6 +50,13 @@ function Signup() {
        
     }
 
+    function handleChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.name] : e.target.value
+        });
+    }
+
         return (
             <div>Signup</div>
     )
