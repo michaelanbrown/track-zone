@@ -34,7 +34,7 @@ function App() {
         <Header/>
           <Routes>
             <Route path="/" element={<Welcome/>} />
-            <Route path="/runners/new" element={<Signup/>} />
+            <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/runners" element={<Runner/>} />
             <Route path="/runners/*" element={<RunnerShow/>} />

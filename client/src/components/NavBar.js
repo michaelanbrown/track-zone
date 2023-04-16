@@ -22,7 +22,7 @@ export default function NavBar ()  {
         <nav className="NavBar">
             <NavLink className="inactive" activeclassname="active" to="/">Welcome</NavLink>
             { currentUser ? null :<br />}
-            { currentUser ? null : <NavLink className="inactive" activeclassname="active" to="/runners/new">Signup</NavLink>}
+            { currentUser ? null : <NavLink className="inactive" activeclassname="active" to="/signup">Signup</NavLink>}
             <br></br>
             { currentUser ? <button className="bttn" onClick={handleLogOut}>Logout</button> : <NavLink className="inactive" activeclassname="active" to="/login">Login</NavLink>}
             <br></br>
