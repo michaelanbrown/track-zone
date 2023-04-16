@@ -9,13 +9,7 @@ function Login() {
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
         username: "",
-        email: "",
         password: "",
-        full_name: "",
-        age: "",
-        photo: "",
-        coach_id: "",
-        event_id: ""
     })
 
     const {username, password} = formData

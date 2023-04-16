@@ -60,22 +60,28 @@ function Signup() {
     return (
         <> 
         <form onSubmit={onSubmit}>
-            <label>
-            Username
-            </label>  
-            <input type='text' name='name' value={name} onChange={handleChange} />
-        
-            <label>
-            Email
-            </label>
-            <input type='text' name='email' value={email} onChange={handleChange} />
-        
-            <label>
-            Password
-            </label>
-            <input type='password' name='password' value={password} onChange={handleChange} />
-            
-        
+            Username: <input type='text' name='username' value={username} onChange={handleChange} />
+            <br/>
+            Email: <input type='text' name='email' value={email} onChange={handleChange} />
+            <br/>
+            Password: <input type='password' name='password' value={password} onChange={handleChange} />
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            Tell us more about yourself!
+            <br/>
+            <br/>
+            Full Name: <input type='text' name='name' value={name} onChange={handleChange} />
+            <br/>
+            Age: <input type='text' name='age' value={age} onChange={handleChange} />
+            <br/>
+            Photo Link: <input type='text' name='photo' value={photo} onChange={handleChange} />
+            <br/>
+            Coach: <input type='text' name='coach' value={coach} onChange={handleChange} />
+            <br/>
+            Latest Event: <input type='text' name='event' value={event} onChange={handleChange} />
+            <br/>
             <input type='submit' value='Sign up!' />
         </form>
         {errors ? errors.map(error => <div key={error}>{error}</div>) :null}
