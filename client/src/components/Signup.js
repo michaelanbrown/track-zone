@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function Signup() {
+    const [formData, setFormData] = useState({
+        name:'',
+        email:'',
+        password:''
+    })
 
         return (
             <div>Signup</div>
