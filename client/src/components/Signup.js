@@ -57,8 +57,29 @@ function Signup() {
         });
     }
 
-        return (
-            <div>Signup</div>
+    return (
+        <> 
+        <form onSubmit={onSubmit}>
+            <label>
+            Username
+            </label>  
+            <input type='text' name='name' value={name} onChange={handleChange} />
+        
+            <label>
+            Email
+            </label>
+            <input type='text' name='email' value={email} onChange={handleChange} />
+        
+            <label>
+            Password
+            </label>
+            <input type='password' name='password' value={password} onChange={handleChange} />
+            
+        
+            <input type='submit' value='Sign up!' />
+        </form>
+        {errors ? errors.map(error => <div key={error}>{error}</div>) :null}
+        </>
     )
 }
 
