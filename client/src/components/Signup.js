@@ -14,7 +14,8 @@ function Signup() {
         age: '',
         photo: '',
         coach: '',
-        event: ''
+        event: '',
+        admin: false
     })
     const {name, username, email, password, age, photo, coach, event} = formData
     const navigate = useNavigate();
