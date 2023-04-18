@@ -30,16 +30,16 @@ function App() {
   },[])
 
   function getRunners() {
-    fetch('/runners')
-    .then(res => {
+    fetch("/runners")
+    .then((res) => {
       if(res.ok){
         res.json().then(setRunners)
-      }else {
-        res.json().then(data => setErrors(data.error))
+      } else {
+        res.json().then(json => setErrors([json.error]))
       }
     })
   }
-
+  console.log(runners)
 
   return (
     <main>
@@ -48,7 +48,7 @@ function App() {
             <Route path="/" element={<Welcome/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path="/runners" element={<Runner/>} />
+            <Route path="/runners" element={<Runner runners={runners}/>} />
             <Route path="/runners/*" element={<RunnerShow/>} />
             <Route path="/coaches" element={<Coaches/>} />
             <Route path="/coaches/*" element={<CoachesShow/>} />
