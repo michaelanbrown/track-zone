@@ -66,3 +66,9 @@ body{
   font-size: 100%;
   color: purple
 }
+
+.RunnerCardImg {
+  max-width: fit-content;
+  max-height: fit-content;
+  text-align: center;
+}
