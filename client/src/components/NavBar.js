@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import './App.css';
 import { UserContext } from '../context/Runner';
 
 export default function NavBar ()  {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const [linkClass, setLinkClass] = useState(false)
     const navigate = useNavigate();
     const handleLogOut = () => {
         fetch(`/logout`, {
@@ -18,23 +19,29 @@ export default function NavBar ()  {
         })
       }
 
+      const myPage = () => {
+        navigate(`/runners/${currentUser.id}`)
+      }
+
     return (
         <nav className="NavBar">
-            <NavLink className="inactive" activeclassname="active" to="/">Welcome</NavLink>
+          <br/>
+            <NavLink className="active" to="/">Welcome</NavLink>
             { currentUser ? <br /> : null }
-            <NavLink className="inactive" activeclassname="active" to="/mypage">My Page</NavLink>
+            <button className="bttn" onClick={myPage}>My Page</button>
             { currentUser ? null :<br />}
-            { currentUser ? null : <NavLink className="inactive" activeclassname="active" to="/signup">Signup</NavLink>}
+            { currentUser ? null : <NavLink className="active" to="/signup">Signup</NavLink>}
             { currentUser ? null :<br />}
-            { currentUser ? null : <NavLink className="inactive" activeclassname="active" to="/login">Login</NavLink>}
+            { currentUser ? null : <NavLink className="active" to="/login">Login</NavLink>}
             <br></br>
-            <NavLink className="inactive" activeclassname="active" to="/runners">Runners</NavLink>
+            <NavLink className="active" to="/runners">Runners</NavLink>
             <br></br>
-            <NavLink className="inactive" activeclassname="active" to="/coaches">Coaches</NavLink>
+            <NavLink className="active" to="/coaches">Coaches</NavLink>
             <br></br>
-            <NavLink className="inactive" activeclassname="active" to="/events">Events</NavLink>
+            <NavLink className="active" to="/events">Events</NavLink>
             <br></br>
             { currentUser ? <button className="bttn" onClick={handleLogOut}>Logout</button> : null }
+            <br/>
         </nav>
     )
 }
