@@ -10,7 +10,7 @@ function RunnerCard( { runner }) {
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
                 <br/>
-                <p>Coach: {runner.coach}</p>
+                {/* <p>Coach: {runner.coach}</p> */}
                 <br/>
                 <br/>
                 <br/>
