@@ -21,6 +21,8 @@ export default function NavBar ()  {
     return (
         <nav className="NavBar">
             <NavLink className="inactive" activeclassname="active" to="/">Welcome</NavLink>
+            { currentUser ? <br /> : null }
+            <NavLink className="inactive" activeclassname="active" to="/mypage">My Page</NavLink>
             { currentUser ? null :<br />}
             { currentUser ? null : <NavLink className="inactive" activeclassname="active" to="/signup">Signup</NavLink>}
             { currentUser ? null :<br />}
