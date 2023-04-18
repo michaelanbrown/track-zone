@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Runner from './Runner';
 
-function RunnerCard() {
+function RunnerCard( { runner }) {
 
         return (
             <div>
-                {/* <h1>{Runner.name}</h1> */}
+                <h1>{runner.full_name}</h1>
             </div>
     )
 }

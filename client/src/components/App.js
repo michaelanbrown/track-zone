@@ -14,7 +14,7 @@ import { UserContext } from '../context/Runner';
 
 function App() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const [runners, setRunners] = useState({})
+  const [runners, setRunners] = useState([])
   const [errors, setErrors] = useState(false)
   useEffect(() => {
     fetch("/authorized_user")
@@ -39,7 +39,6 @@ function App() {
       }
     })
   }
-  console.log(runners)
 
   return (
     <main>
