@@ -69,3 +69,11 @@ body{
 p {
   margin: 0;
 }
+
+.edit {
+  cursor: pointer;
+}
+
+.centering {
+  
+}

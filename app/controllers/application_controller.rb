@@ -17,12 +17,7 @@ class ApplicationController < ActionController::API
   end
 
   def is_authorized? 
-    permitted = current_runner.admin? 
-    render json: { errors: {User: "does not have admin permissions"}}, status: :forbidden unless permitted 
-  end
-
-  def is_owner?
-    permitted = current_runner == runner_id
+    permitted = current_runner.admin? || current_runner == runner_id
     render json: { errors: {User: "does not have admin permissions"}}, status: :forbidden unless permitted 
   end
 

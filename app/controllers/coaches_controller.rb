@@ -1,5 +1,5 @@
 class CoachesController < ApplicationController
-    before_action :is_authorized?, only: [:destroy]
+    before_action :is_authorized?, only: [:destroy, :update]
 
     def index 
         render json: Coach.all, status: :ok

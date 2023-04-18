@@ -1,6 +1,6 @@
 class RunnersController < ApplicationController
     skip_before_action :authenticate_runner, only: [:create, :index]
-
+    before_action :is_authorized?, only: [:update]
 
     def index
         render json: Runner.all, status: :ok

@@ -5,7 +5,6 @@ import { UserContext } from '../context/Runner';
 
 export default function NavBar ()  {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [linkClass, setLinkClass] = useState(false)
     const navigate = useNavigate();
     const handleLogOut = () => {
         fetch(`/logout`, {
@@ -27,7 +26,8 @@ export default function NavBar ()  {
         <nav className="NavBar">
           <br/>
             <NavLink className="active" to="/">Welcome</NavLink>
-            { currentUser ? <br /> : null }
+            { currentUser ? null : <br/> }
+            { currentUser ? <br/> : null }
             <button className="bttn" onClick={myPage}>My Page</button>
             { currentUser ? null :<br />}
             { currentUser ? null : <NavLink className="active" to="/signup">Signup</NavLink>}
