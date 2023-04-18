@@ -16,6 +16,12 @@ class RunnersController < ApplicationController
         render json: runner, status: :ok
     end
 
+    def update
+        runner = Runner.find(params[:id])
+        runner.update!(runner_params)
+        render json: runner, status: :accepted
+    end
+
     # def destroy
     #     runner = Runner.find(params[:id])
     #     runner.destroy
