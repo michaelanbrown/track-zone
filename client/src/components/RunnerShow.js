@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
+import EditRunnerForm from "./EditRunnerForm";
 
-function RunnerShow({ }) {
+function RunnerShow({ runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
         return (
@@ -15,6 +16,7 @@ function RunnerShow({ }) {
                 <br/>
                 <br/>
                 <br/>
+                <EditRunnerForm runners={runners} setRunners={setRunners}/>
             </div>
     )
 }
