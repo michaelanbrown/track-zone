@@ -47,10 +47,10 @@ function App() {
             <Route path="/" element={<Welcome/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path="/runners" element={<Runner runners={runners}/>} />
-            <Route path="/runners/*" element={<RunnerShow/>} />
+            <Route path="/runners/*" element={<Runner runners={runners}/>} />
+            <Route path="/runners/:id" element={<RunnerShow runners={runners}/>} />
             <Route path="/coaches" element={<Coaches/>} />
-            <Route path="/coaches/*" element={<CoachesShow/>} />
+            <Route path="/coaches/:id" element={<CoachesShow/>} />
             <Route path="/events" element={<Events/>} />
           </Routes>
     </main>

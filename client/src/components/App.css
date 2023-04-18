@@ -72,3 +72,7 @@ body{
   max-height: fit-content;
   text-align: center;
 }
+
+p {
+  margin: 0;
+}

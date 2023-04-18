@@ -3,7 +3,6 @@ import './App.css';
 import RunnerCard from './RunnerCard';
 
 function Runner({ runners }) {
-    console.log(runners)
     
     const runnerRender = runners.map (runner => {
         return (

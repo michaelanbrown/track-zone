@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import './App.css';
-import { UserContext } from '../context/Runner';
 
-function RunnerShow() {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+function RunnerShow({ runners }) {
+
 
         return (
-            <div>{currentUser.full_name}</div>
+            <div>hi</div>
     )
 }
 
