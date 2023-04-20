@@ -47,7 +47,7 @@ function RunnerShow({ runners, setRunners }) {
                 <br/>
                 <br/>
                 <br/>
-                <EditRunnerForm runners={runners} setRunners={setRunners}/>
+                <EditRunnerForm runners={runners} setRunners={setRunners} errors={errors} setErrors={setErrors} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/>
             </div>
     )
 }
