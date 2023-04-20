@@ -5,7 +5,8 @@ function RunnerCard( { runner }) {
 
         return (
             <div>
-                <h1>{runner.full_name}</h1>
+                <h1>{runner.full_name}{' '}<button className="edit">🗑️</button></h1>
+                <br/>
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
                 <p>Coach: {runner.coach.full_name}</p>
