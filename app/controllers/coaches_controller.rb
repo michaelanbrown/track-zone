@@ -15,11 +15,11 @@ class CoachesController < ApplicationController
         render json: coach, status: :created
     end
 
-    def update
-        coach = Coach.find(params[:id])
-        coach.update!(coach_params)
-        render json: coach, status: :accepted
-    end 
+    # def update
+    #     coach = Coach.find(params[:id])
+    #     coach.update!(coach_params)
+    #     render json: coach, status: :accepted
+    # end 
 
     # def destroy
     #     coach = Coach.find(params[:id])
