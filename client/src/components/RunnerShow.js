@@ -3,7 +3,7 @@ import './App.css';
 import { UserContext } from '../context/Runner';
 import EditRunnerForm from "./EditRunnerForm";
 
-function RunnerShow({ runners, setRunners }) {
+function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [show, setShow] = useState(false)
     const [errors, setErrors] = useState("")
@@ -36,6 +36,7 @@ function RunnerShow({ runners, setRunners }) {
           })
         },[])
 
+
         function showClick() {
             setShow(!show)
         }
@@ -50,7 +51,7 @@ function RunnerShow({ runners, setRunners }) {
                 <br/>
                 <br/>
                 <br/>
-                {show ? <EditRunnerForm runners={runners} setRunners={setRunners} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/> : null }
+                {show ? <EditRunnerForm runners={runners} setRunners={setRunners} filteredRunners={filteredRunners} setFilteredRunners={setFilteredRunners} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/> : null }
             </div>
     )
 }

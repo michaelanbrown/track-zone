@@ -15,6 +15,7 @@ import { UserContext } from '../context/Runner';
 function App() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [runners, setRunners] = useState([])
+  const [filteredRunners, setFilteredRunners] = useState(runners)
   const [errors, setErrors] = useState(false)
   useEffect(() => {
     fetch("/authorized_user")
@@ -27,7 +28,7 @@ function App() {
         });
       }
     })
-  },[])
+  },[filteredRunners])
 
   function getRunners() {
     fetch("/runners")
@@ -48,7 +49,7 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/runners/*" element={<Runner runners={runners}/>} />
-            <Route path="/runners/:id" element={<RunnerShow runners={runners} setRunners={setRunners}/>} />
+            <Route path="/runners/:id" element={<RunnerShow filteredRunners={filteredRunners} setFilteredRunners={setFilteredRunners} runners={runners} setRunners={setRunners}/>} />
             <Route path="/coaches" element={<Coaches/>} />
             <Route path="/coaches/:id" element={<CoachesShow/>} />
             <Route path="/events" element={<Events/>} />

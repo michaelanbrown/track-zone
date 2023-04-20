@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData, errors, setErrors, show, setShow }) {
+function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData, errors, setErrors, show, setShow, filteredRunners, setFilteredRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
     function handleFormChange(e) {
@@ -12,10 +12,10 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
         });
     }
 
-
     function updateRunners(updatedRunner) {
         const updatingRunner = runners.map((runner) => {
             if (runner.id === updatedRunner.id) {
+                setCurrentUser(runner)
                 return updatedRunner
             } else {
                 return runner
@@ -44,12 +44,12 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
             if(res.ok){
               res.json()
               .then(runner => updateRunners(runner))
+              .then(setFilteredRunners(runners))
               .then(setShow(!show))
             } else {
               res.json().then(json => setErrors([json.error]))
             }
     })}
-
 
         return (
             <div>
