@@ -3,12 +3,12 @@ import './App.css';
 import RunnerCard from './RunnerCard';
 import { UserContext } from '../context/Runner';
 
-function Runner({ runners }) {
+function Runner({ runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     
     const runnerRender = runners.map (runner => {
         return (
-            <RunnerCard runners={runners} runner={runner} key={runner.id} />
+            <RunnerCard runners={runners} runner={runner} key={runner.id} setRunners={setRunners} />
         )
     })
 

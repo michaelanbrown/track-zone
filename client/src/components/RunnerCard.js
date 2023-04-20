@@ -2,9 +2,27 @@ import React, { useContext } from 'react';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function RunnerCard( { runner }) {
+function RunnerCard( { runner, runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const adminUser = currentUser.admin ? <h1>{runner.full_name}{' '}<button className="edit">🗑️</button></h1> : <h1>{runner.full_name}</h1>
+
+    function deletedRunner(deleted) {
+        const updatedRunners = runners.filter((runner) => runner.id !== deleted.id)
+        setRunners(updatedRunners)
+    }
+
+    function handleRunnerDelete() {
+        fetch(`runners/${runner.id}`, {
+            method:"DELETE"
+        })
+        .then(res =>{
+          if(res.ok){
+            deletedRunner(runner)
+          }
+        })
+      }
+
+      const adminUser = currentUser.admin ? <h1>{runner.full_name}{' '}<button className="edit" onClick={handleRunnerDelete}>🗑️</button></h1> : <h1>{runner.full_name}</h1>
+
 
         return (
             <div>
