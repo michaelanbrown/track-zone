@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :runners, only: [:index, :show, :create, :update]
+  resources :runners
   resources :events
   resources :coaches, only: [:index, :create]
 

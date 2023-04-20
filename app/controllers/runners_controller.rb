@@ -1,6 +1,6 @@
 class RunnersController < ApplicationController
     skip_before_action :authenticate_runner, only: [:create, :index]
-    before_action :is_authorized?, only: [:update]
+    before_action :is_authorized?, only: [:update, :destroy]
 
     def index
         render json: Runner.all, status: :ok
@@ -21,11 +21,11 @@ class RunnersController < ApplicationController
         render json: runner, status: :accepted
     end
 
-    # def destroy
-    #     runner = Runner.find(params[:id])
-    #     runner.destroy
-    #     head :no_content 
-    # end 
+    def destroy
+        runner = Runner.find(params[:id])
+        runner.destroy
+        head :no_content 
+    end 
 
     private 
 
