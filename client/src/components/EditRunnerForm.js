@@ -24,24 +24,43 @@ function EditRunnerForm({ runners, setRunners }) {
         });
     }
 
+    function updateRunners(updatedRunner) {
+        const updatingRunner = runners.map((runner) => {
+            if (runner.id === updatedRunner.id) {
+                return updatedRunner
+            } else {
+                return runner
+            }
+        })
+        setRunners(updatingRunner)
+        setFormData({...formData,
+            full_name: formData.full_name,
+            age: formData.age,
+            photo: formData.photo,
+            username: formData.username,
+            coach: formData.coach,
+            event: formData.event})
+    }
+
     function handleRunnerChange(e) {
         e.preventDefault();
         fetch(`runners/${id}`, {
-            method: "POST",
+            method: "PATCH",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
             },
             body: JSON.stringify(formData)
         }).then((res) => {
             if(res.ok){
               res.json().then(setRunners)
               .then(setFormData({
-                full_name: "",
-                age: "",
-                photo: "",
-                username: "",
-                coach: "",
-                event: ""
+                full_name: formData.full_name,
+                age: formData.age,
+                photo: formData.photo,
+                username: formData.username,
+                coach: formData.coach,
+                event: formData.event
             }))
             } else {
               res.json().then(json => setErrors([json.error]))
@@ -49,7 +68,11 @@ function EditRunnerForm({ runners, setRunners }) {
     })}
 
         return (
-            <div>hi</div>
+            <div>
+                <form>
+                Enter your changes:
+                </form>
+            </div>
     )
 }
 

@@ -1,10 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
 import EditRunnerForm from "./EditRunnerForm";
 
 function RunnerShow({ runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const [errors, setErrors] = useState("")
+    const [updateFormData, setUpdateFormData] = useState({
+        full_name: "",
+        age: "",
+        photo: "",
+        username: "",
+        coach: "",
+        event: ""
+    });
+
+    useEffect(() => {
+        fetch(`/runners/${currentUser.id}`)
+        .then((res) => {
+            if (res.ok) {
+              res.json()
+              .then(runner => {
+                setUpdateFormData({...updateFormData,
+                full_name: runner.full_name,
+                age: runner.age,
+                photo: runner.photo,
+                username: runner.username,
+                coach: runner.coach ? runner.coach['full_name'] : null,
+                event: runner.event ? runner.event['name'] : null})
+              });
+            } else {
+                res.json().then(json => setErrors([json.error]))
+            }
+          })
+        },[currentUser.id])
+
+        console.log(updateFormData)
 
         return (
             <div>
