@@ -5,6 +5,7 @@ import EditRunnerForm from "./EditRunnerForm";
 
 function RunnerShow({ runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const [show, setShow] = useState(false)
     const [errors, setErrors] = useState("")
     const [updateFormData, setUpdateFormData] = useState({
         full_name: "",
@@ -35,11 +36,13 @@ function RunnerShow({ runners, setRunners }) {
           })
         },[currentUser.id])
 
-        console.log(updateFormData)
+        function showClick() {
+            setShow(!show)
+        }
 
         return (
             <div>
-                <h1 className = "centering">{currentUser.full_name}{' '}<button className="edit">✏️</button></h1>
+                <h1 className = "centering">{currentUser.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
                 <img className = "RunnerCardImg" src={currentUser.photo} alt={currentUser.full_name} width="40%" height="40%"/>
                 <p>Age: {currentUser.age}</p>
                 <p>Coach: { currentUser.coach ? currentUser.coach['full_name'] : null }</p>
@@ -47,7 +50,7 @@ function RunnerShow({ runners, setRunners }) {
                 <br/>
                 <br/>
                 <br/>
-                <EditRunnerForm runners={runners} setRunners={setRunners} errors={errors} setErrors={setErrors} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/>
+                {show ? <EditRunnerForm runners={runners} setRunners={setRunners} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/> : null }
             </div>
     )
 }
