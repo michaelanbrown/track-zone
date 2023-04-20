@@ -17,7 +17,7 @@ function RunnerShow({ runners, setRunners }) {
     });
 
     useEffect(() => {
-        fetch(`/runners/${currentUser.id}`)
+        fetch(`${currentUser.id}`)
         .then((res) => {
             if (res.ok) {
               res.json()
@@ -34,7 +34,7 @@ function RunnerShow({ runners, setRunners }) {
                 res.json().then(json => setErrors([json.error]))
             }
           })
-        },[currentUser.id])
+        },[])
 
         function showClick() {
             setShow(!show)

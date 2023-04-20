@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
-import { useParams } from 'react-router-dom';
 
 function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData, errors, setErrors, show, setShow }) {
-    const { id } = useParams();
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
     function handleFormChange(e) {
@@ -13,6 +11,7 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
             [e.target.id] : e.target.value
         });
     }
+
 
     function updateRunners(updatedRunner) {
         const updatingRunner = runners.map((runner) => {
@@ -34,7 +33,7 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
 
     function handleRunnerChange(e) {
         e.preventDefault();
-        fetch(`runners/${id}`, {
+        fetch(`${currentUser.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type" : "application/json",
@@ -54,20 +53,20 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
 
         return (
             <div>
-                <form>
+                <form onSubmit={handleRunnerChange}>
                 Enter your changes:
                 <br/>
-                Name: <input type="text" className="recordFormElement" id="full_name" value={updateFormData.full_name} onChange={handleFormChange} placeholder="Purchase Price"/>
+                Name: <input type="text" className="recordFormElement" id="full_name" value={updateFormData.full_name} onChange={handleFormChange} placeholder="Full Name"/>
                 <br/>
-                Age: <input type="text" className="recordFormElement" id="age" value={updateFormData.age} onChange={handleFormChange} placeholder="Square Feet"/>
+                Age: <input type="text" className="recordFormElement" id="age" value={updateFormData.age} onChange={handleFormChange} placeholder="Age"/>
                 <br/>
-                Photo: <input type="text" className="recordFormElement" id="photo" value={updateFormData.photo} onChange={handleFormChange} placeholder="Garage Spaces"/>
+                Photo: <input type="text" className="recordFormElement" id="photo" value={updateFormData.photo} onChange={handleFormChange} placeholder="Photo"/>
                 <br/>
-                Username: <input type="text" className="recordFormElement" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Flip Status"/>
+                Username: <input type="text" className="recordFormElement" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
                 <br/>
-                Coach: <input type="text" className="recordFormElement" id="coach" value={updateFormData.coach} onChange={handleFormChange} placeholder="Image URL"/>
+                Coach: <input type="text" className="recordFormElement" id="coach" value={updateFormData.coach} onChange={handleFormChange} placeholder="Coach"/>
                 <br/>
-                Event: <input type="text" className="recordFormElement" id="event" value={updateFormData.event} onChange={handleFormChange} placeholder="Image URL"/>
+                Event: <input type="text" className="recordFormElement" id="event" value={updateFormData.event} onChange={handleFormChange} placeholder="Event"/>
                 <br/>
                 <button className='submit'>Submit Changes</button>
                 </form>
