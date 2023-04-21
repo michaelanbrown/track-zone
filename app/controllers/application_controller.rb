@@ -10,6 +10,10 @@ class ApplicationController < ActionController::API
     @current_runner ||= Runner.find_by(id: session[:runner_id])
   end
 
+  def responding_runner
+    @responding_runner = Runner.find(params[:id])
+  end
+
   private
 
   def authenticate_runner
@@ -17,8 +21,8 @@ class ApplicationController < ActionController::API
   end
 
   def is_authorized? 
-    permitted = current_runner.admin? || current_runner == runner_id
-    render json: { errors: {User: "does not have admin permissions"}}, status: :forbidden unless permitted 
+    permitted = current_runner.admin? || current_runner.id == responding_runner.id
+    render json: { errors: {User: "does not have permissions"}}, status: :forbidden unless permitted 
   end
 
   def render_unprocessable_entity_response(exception)
