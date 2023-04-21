@@ -15,7 +15,8 @@ function RunnerShow({ runners, setRunners }) {
         photo: "",
         username: "",
         coach: "",
-        event: ""
+        event: "",
+        admin: ""
     });
     const [runner, setRunner] = useState({
         full_name: "",
@@ -23,7 +24,8 @@ function RunnerShow({ runners, setRunners }) {
         photo: "",
         username: "",
         coach: "",
-        event: ""
+        event: "",
+        admin: ""
     })
 
     useEffect(() => {
@@ -38,14 +40,16 @@ function RunnerShow({ runners, setRunners }) {
                 photo: runner.photo,
                 username: runner.username,
                 coach: runner.coach,
-                event: runner.event})
+                event: runner.event,
+                admin: runner.admin})
                 setRunner({...updateFormData,
                     full_name: runner.full_name,
                     age: runner.age,
                     photo: runner.photo,
                     username: runner.username,
                     coach: runner.coach,
-                    event: runner.event})
+                    event: runner.event,
+                    admin: runner.admin})
               });
             } else {
                 res.json().then(json => setErrors([json.error]))

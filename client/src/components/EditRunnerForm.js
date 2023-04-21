@@ -30,7 +30,8 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, updateFormData
             photo: updateFormData.photo,
             username: updateFormData.username,
             coach: updateFormData.coach,
-            event: updateFormData.event})
+            event: updateFormData.event,
+            admin: updateFormData.admin})
     }
 
     function handleRunnerChange(e) {
@@ -53,7 +54,8 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, updateFormData
                     photo: runner.photo,
                     username: runner.username,
                     coach: runner.coach,
-                    event: runner.event})})
+                    event: runner.event,
+                    admin: runner.admin})})
               .then(setShow(!show))
             } else {
               res.json().then(json => setErrors([json.error]))
@@ -65,17 +67,19 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, updateFormData
                 <form onSubmit={handleRunnerChange}>
                 Enter your changes:
                 <br/>
-                Name: <input type="text" className="recordFormElement" id="full_name" value={updateFormData.full_name} onChange={handleFormChange} placeholder="Full Name"/>
+                Name: <input type="text" id="full_name" value={updateFormData.full_name} onChange={handleFormChange} placeholder="Full Name"/>
                 <br/>
-                Age: <input type="text" className="recordFormElement" id="age" value={updateFormData.age} onChange={handleFormChange} placeholder="Age"/>
+                Age: <input type="text" id="age" value={updateFormData.age} onChange={handleFormChange} placeholder="Age"/>
                 <br/>
-                Photo: <input type="text" className="recordFormElement" id="photo" value={updateFormData.photo} onChange={handleFormChange} placeholder="Photo"/>
+                Photo: <input type="text" id="photo" value={updateFormData.photo} onChange={handleFormChange} placeholder="Photo"/>
                 <br/>
-                Username: <input type="text" className="recordFormElement" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
+                Username: <input type="text" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
                 <br/>
-                Coach: <input type="text" className="recordFormElement" id="coach" value={updateFormData.coach ? updateFormData.coach['full_name'] : null } onChange={handleFormChange} placeholder="Coach"/>
+                Coach: <input type="text" id="coach" value={updateFormData.coach ? updateFormData.coach['full_name'] : null } onChange={handleFormChange} placeholder="Coach"/>
                 <br/>
-                Event: <input type="text" className="recordFormElement" id="event" value={updateFormData.event ? updateFormData.event['name'] : null} onChange={handleFormChange} placeholder="Event"/>
+                Event: <input type="text" id="event" value={updateFormData.event ? updateFormData.event['name'] : null} onChange={handleFormChange} placeholder="Event"/>
+                <br/>
+                { currentUser.admin ? <>Admin : <input type="text" id="admin" value={updateFormData.admin} onChange={handleFormChange} placeholder="Admin?"/></> : null }
                 <br/>
                 <button className='submit'>Submit Changes</button>
                 </form>

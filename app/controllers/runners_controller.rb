@@ -22,7 +22,11 @@ class RunnersController < ApplicationController
 
     def update
         runner = Runner.find(params[:id])
-        runner.update!(runner_params)
+        if current_runner.admin
+            runner.update!(admin_runner_params)
+        else
+            runner.update!(runner_params)
+        end
         render json: runner, status: :accepted
     end
 
@@ -34,7 +38,11 @@ class RunnersController < ApplicationController
 
     private 
 
-    def runner_params
+    def admin_runner_params
         params.permit(:username, :email, :password, :full_name, :age, :photo, :coach_id, :event_id, :admin)
+    end
+
+    def runner_params
+        params.permit(:username, :email, :password, :full_name, :age, :photo, :coach_id, :event_id)
     end 
 end
