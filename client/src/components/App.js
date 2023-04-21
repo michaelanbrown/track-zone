@@ -71,8 +71,8 @@ function App() {
         <Header/>
           <Routes>
             <Route path="/" element={<Welcome/>} />
-            <Route path="/signup" element={<Signup coaches={coaches} events={events}/>} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/signup" element={<Signup coaches={coaches} events={events} getRunners={getRunners} getCoaches={getCoaches} getEvents={getEvents}/>} />
+            <Route path="/login" element={<Login getRunners={getRunners} getCoaches={getCoaches} getEvents={getEvents}/>} />
             <Route path="/runners/*" element={<Runner runners={runners} setRunners={setRunners}/>} />
             <Route path="/runners/:id" element={<RunnerShow runners={runners} setRunners={setRunners} coaches={coaches} events={events}/>} />
             <Route path="/coaches" element={<Coaches/>} />

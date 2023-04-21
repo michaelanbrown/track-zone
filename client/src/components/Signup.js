@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function Signup({ coaches, events }) {
+function Signup({ getRunners, getCoaches, getEvents }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
@@ -14,9 +14,10 @@ function Signup({ coaches, events }) {
         age: '',
         photo: '',
         coach_id: 34,
-        event_id: 1
+        event_id: 1,
+        admin: ''
     })
-    const {full_name, username, email, password, age, photo, coach_id, event_id} = formData
+    const {full_name, username, email, password, age, photo, coach_id, event_id, admin} = formData
     const navigate = useNavigate();
 
     function onSubmit(e){
@@ -29,7 +30,8 @@ function Signup({ coaches, events }) {
             age,
             photo,
             coach_id,
-            event_id
+            event_id,
+            admin
         }   
         fetch(`/runners`,{
           method:'POST',
@@ -41,6 +43,9 @@ function Signup({ coaches, events }) {
                 res.json().then(user => {
                     setCurrentUser(user)
                     navigate(`/runners/${user.id}`)
+                    getRunners();
+                    getCoaches();
+                    getEvents();
                 })
             }else {
                 res.json().then(json => setErrors([json.error]))

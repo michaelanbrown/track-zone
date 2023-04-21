@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function Login() {
+function Login({ getRunners, getCoaches, getEvents }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
     const [errors, setErrors] = useState([])
@@ -32,6 +32,9 @@ function Login() {
                 res.json().then(user => {
                     setCurrentUser(user)
                     navigate(`/runners/${user.id}`)
+                    getRunners();
+                    getCoaches();
+                    getEvents();
                 })
             } else {
                 res.json().then(json => setErrors([json.error]))
