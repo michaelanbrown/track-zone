@@ -18,16 +18,10 @@ export default function NavBar ()  {
         })
       }
 
-      const myPage = () => {
-        navigate(`/runners/${currentUser.id}`)
-      }
-
     return (
         <nav className="NavBar">
           <br/>
             <NavLink className="active" to="/">Welcome</NavLink>
-            { currentUser ? <br/> : null }
-            { currentUser ? <button className="bttn" onClick={myPage}>My Page</button> : null }
             { currentUser ? null :<br />}
             { currentUser ? null : <NavLink className="active" to="/signup">Signup</NavLink>}
             { currentUser ? null :<br />}

@@ -11,6 +11,10 @@ class SessionsController < ApplicationController
       end
   
     end
+
+    def show
+      render json: current_runner, status: :ok
+    end
   
     def destroy
       session.delete(:runner_id)

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import './App.css';
 import { UserContext } from '../context/Runner';
+import { Link, Routes, Route } from 'react-router-dom';
+import RunnerShow from './RunnerShow';
 
 function RunnerCard( { runner, runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -23,7 +25,6 @@ function RunnerCard( { runner, runners, setRunners }) {
 
       const adminUser = currentUser.admin ? <h1>{runner.full_name}{' '}<button className="edit" onClick={handleRunnerDelete}>🗑️</button></h1> : <h1>{runner.full_name}</h1>
 
-
         return (
             <div>
                 {adminUser}
@@ -32,6 +33,10 @@ function RunnerCard( { runner, runners, setRunners }) {
                 <p>Age: {runner.age}</p>
                 <p>Coach: {runner.coach.full_name}</p>
                 <p>Latest Event: {runner.event.name}</p>
+                {currentUser.admin ? <><Link to={`${runner.id}`}>View Details</Link>
+                  <Routes>
+                    <Route path={`runners/${runner.id}`} element={<RunnerShow/>}/>
+                  </Routes></> : null}
                 <br/>
                 <br/>
                 <br/>

@@ -64,9 +64,9 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
                 <br/>
                 Username: <input type="text" className="recordFormElement" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
                 <br/>
-                Coach: <input type="text" className="recordFormElement" id="coach" value={updateFormData.coach} onChange={handleFormChange} placeholder="Coach"/>
+                Coach: <input type="text" className="recordFormElement" id="coach" value={updateFormData.coach ? updateFormData.coach['full_name'] : null } onChange={handleFormChange} placeholder="Coach"/>
                 <br/>
-                Event: <input type="text" className="recordFormElement" id="event" value={updateFormData.event} onChange={handleFormChange} placeholder="Event"/>
+                Event: <input type="text" className="recordFormElement" id="event" value={updateFormData.event ? updateFormData.event['name'] : null} onChange={handleFormChange} placeholder="Event"/>
                 <br/>
                 <button className='submit'>Submit Changes</button>
                 </form>

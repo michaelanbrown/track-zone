@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import './App.css';
+import { useParams } from "react-router-dom";
 import { UserContext } from '../context/Runner';
 import EditRunnerForm from "./EditRunnerForm";
 
 function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }) {
+    const { id } = useParams();
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [show, setShow] = useState(false)
     const [errors, setErrors] = useState("")
@@ -17,7 +19,7 @@ function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }
     });
 
     useEffect(() => {
-        fetch(`${currentUser.id}`)
+        fetch(`${id}`)
         .then((res) => {
             if (res.ok) {
               res.json()
@@ -27,8 +29,8 @@ function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }
                 age: runner.age,
                 photo: runner.photo,
                 username: runner.username,
-                coach: runner.coach ? runner.coach['full_name'] : null,
-                event: runner.event ? runner.event['name'] : null})
+                coach: runner.coach,
+                event: runner.event})
               });
             } else {
                 res.json().then(json => setErrors([json.error]))
@@ -43,11 +45,11 @@ function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }
 
         return (
             <div>
-                <h1 className = "centering">{currentUser.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
-                <img className = "RunnerCardImg" src={currentUser.photo} alt={currentUser.full_name} width="40%" height="40%"/>
-                <p>Age: {currentUser.age}</p>
-                <p>Coach: { currentUser.coach ? currentUser.coach['full_name'] : null }</p>
-                <p>Latest Event: { currentUser.coach ? currentUser.event['name'] : null }</p>
+                <h1 className = "centering">{updateFormData.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
+                <img className = "RunnerCardImg" src={updateFormData.photo} alt={updateFormData.full_name} width="40%" height="40%"/>
+                <p>Age: {updateFormData.age}</p>
+                <p>Coach: { updateFormData.coach ? updateFormData.coach['full_name'] : null }</p>
+                <p>Latest Event: { updateFormData.coach ? updateFormData.event['name'] : null }</p>
                 <br/>
                 <br/>
                 <br/>
