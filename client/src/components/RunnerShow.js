@@ -14,8 +14,8 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
         age: "",
         photo: "",
         username: "",
-        coach: "",
-        event: "",
+        coach_id: "",
+        event_id: "",
         admin: ""
     });
     const [runner, setRunner] = useState({
@@ -23,10 +23,12 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
         age: "",
         photo: "",
         username: "",
-        coach: "",
-        event: "",
+        coach_id: "",
+        event_id: "",
         admin: ""
     })
+
+    console.log(updateFormData)
 
     useEffect(() => {
         fetch(`${id}`)
@@ -39,16 +41,16 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
                 age: runner.age,
                 photo: runner.photo,
                 username: runner.username,
-                coach: runner.coach,
-                event: runner.event,
+                coach_id: runner.coach,
+                event_id: runner.event,
                 admin: runner.admin})
                 setRunner({...updateFormData,
                     full_name: runner.full_name,
                     age: runner.age,
                     photo: runner.photo,
                     username: runner.username,
-                    coach: runner.coach,
-                    event: runner.event,
+                    coach_id: runner.coach,
+                    event_id: runner.event,
                     admin: runner.admin})
               });
             } else {
@@ -62,15 +64,15 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
             setShow(!show)
         }
 
-        const eventName = `${runner.event['name']} - ${runner.event['distance']}${runner.event['unit_of_measurement']}`
+        const eventName = `${runner.event_id['name']} - ${runner.event_id['distance']}${runner.event_id['unit_of_measurement']}`
 
         return (
             <div>
                 <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
-                <p>Coach: { runner.coach ? runner.coach['full_name'] : null }</p>
-                <p>Latest Event: { runner.event ? eventName : null }</p>
+                <p>Coach: { runner.coach_id ? runner.coach_id['full_name'] : null }</p>
+                <p>Latest Event: { runner.event_id ? eventName : null }</p>
                 <br/>
                 <br/>
                 <br/>

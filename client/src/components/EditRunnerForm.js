@@ -17,14 +17,14 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
     function handleCoachChange(e) {
         setUpdateFormData({
             ...updateFormData,
-            [e.target.id] : document.getElementById('coach').value
+            [e.target.id] : document.getElementById('coach_id').value
         });
     }
 
     function handleEventChange(e) {
         setUpdateFormData({
             ...updateFormData,
-            [e.target.id] : document.getElementById('event').value
+            [e.target.id] : document.getElementById('event_id').value
         });
     }
 
@@ -43,8 +43,8 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
             age: updateFormData.age,
             photo: updateFormData.photo,
             username: updateFormData.username,
-            coach: updateFormData.coach,
-            event: updateFormData.event,
+            coach_id: updateFormData.coach,
+            event_id: updateFormData.event,
             admin: updateFormData.admin})
     }
 
@@ -67,8 +67,8 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
                     age: runner.age,
                     photo: runner.photo,
                     username: runner.username,
-                    coach: runner.coach,
-                    event: runner.event,
+                    coach_id: runner.coach,
+                    event_id: runner.event,
                     admin: runner.admin})})
               .then(setShow(!show))
             } else {
@@ -97,11 +97,11 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
                 <br/>
                 Username: <input type="text" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
                 <br/>
-                Coach: <select id="coach" onChange={handleCoachChange} defaultValue={runner.coach.id}>
+                Coach: <select id="coach_id" onChange={handleCoachChange} defaultValue={runner.coach_id.id}>
                     {coachOptions}
                 </select>
                 <br/>
-                Event: <select id="event" onChange={handleEventChange} defaultValue={runner.event.id}>
+                Event: <select id="event_id" onChange={handleEventChange} defaultValue={runner.event_id.id}>
                     {eventOptions}
                 </select>
                 <br/>
