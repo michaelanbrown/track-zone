@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from '../context/Runner';
 import EditRunnerForm from "./EditRunnerForm";
 
-function RunnerShow({ runners, setRunners }) {
+function RunnerShow({ runners, setRunners, coaches, events }) {
     const { id } = useParams();
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [show, setShow] = useState(false)
@@ -72,7 +72,7 @@ function RunnerShow({ runners, setRunners }) {
                 <br/>
                 <br/>
                 <br/>
-                {show ? <EditRunnerForm runner={runner} setRunner={setRunner} runners={runners} setRunners={setRunners} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/> : null }
+                {show ? <EditRunnerForm runner={runner} setRunner={setRunner} runners={runners} setRunners={setRunners} coaches={coaches} events={events} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/> : null }
             </div>
     )
 }

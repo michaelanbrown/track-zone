@@ -1,3 +1,3 @@
 class RunnersCoachSerializer < ActiveModel::Serializer
-  attributes :full_name
+  attributes :id, :full_name
 end

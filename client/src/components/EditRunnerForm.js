@@ -3,7 +3,7 @@ import './App.css';
 import { UserContext } from '../context/Runner';
 import { useParams } from "react-router-dom";
 
-function EditRunnerForm({ runner, setRunner, runners, setRunners, updateFormData, setUpdateFormData, errors, setErrors, show, setShow }) {
+function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, events, updateFormData, setUpdateFormData, errors, setErrors, show, setShow }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const { id } = useParams();
 
@@ -62,6 +62,14 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, updateFormData
             }
     })}
 
+    const coachOptions = coaches.map(coach => {
+        return (<option value={coach.full_name} key={coach.id}>{coach.full_name}</option>)
+    })
+
+    const eventOptions = events.map(event => {
+        return (<option value={event.name} key={event.id}>{event.name}</option>)
+    })
+
         return (
             <div>
                 <form onSubmit={handleRunnerChange}>
@@ -75,9 +83,13 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, updateFormData
                 <br/>
                 Username: <input type="text" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
                 <br/>
-                Coach: <input type="text" id="coach" value={updateFormData.coach ? updateFormData.coach['full_name'] : null } onChange={handleFormChange} placeholder="Coach"/>
+                Coach: <select>
+                    {coachOptions}
+                </select>
                 <br/>
-                Event: <input type="text" id="event" value={updateFormData.event ? updateFormData.event['name'] : null} onChange={handleFormChange} placeholder="Event"/>
+                Event: <select>
+                    {eventOptions}
+                </select>
                 <br/>
                 { currentUser.admin ? <>Admin : <input type="text" id="admin" value={updateFormData.admin} onChange={handleFormChange} placeholder="Admin?"/></> : null }
                 <br/>
