@@ -1,3 +1,3 @@
 class RunnersEventSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :distance, :unit_of_measurement
 end

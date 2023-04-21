@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+    skip_before_action :authenticate_runner, only: [:create, :index]
 
     def index 
         render json: Event.all, status: :ok

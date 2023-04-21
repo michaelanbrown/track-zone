@@ -81,7 +81,7 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
     })
 
     const eventOptions = events.map(event => {
-        return (<option value={event.id} key={event.id}>{event.name}</option>)
+        return (<option value={event.id} key={event.id}>{event.name} - {event.distance}{event.unit_of_measurement}</option>)
     })
 
         return (

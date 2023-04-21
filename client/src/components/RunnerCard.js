@@ -24,6 +24,7 @@ function RunnerCard( { runner, runners, setRunners }) {
       }
 
       const adminUser = currentUser.admin ? <h1>{runner.full_name}{' '}<button className="edit" onClick={handleRunnerDelete}>🗑️</button></h1> : <h1>{runner.full_name}</h1>
+      const eventName = `${runner.event['name']} - ${runner.event['distance']}${runner.event['unit_of_measurement']}`
 
         return (
             <div>
@@ -32,7 +33,7 @@ function RunnerCard( { runner, runners, setRunners }) {
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
                 <p>Coach: {runner.coach.full_name}</p>
-                <p>Latest Event: {runner.event.name}</p>
+                <p>Latest Event: {eventName}</p>
                 {currentUser.admin ||currentUser.id == runner.id ? <><Link to={`${runner.id}`}>View Details</Link>
                   <Routes>
                     <Route path={`runners/${runner.id}`} element={<RunnerShow/>}/>

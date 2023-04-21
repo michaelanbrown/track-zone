@@ -28,8 +28,6 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
         admin: ""
     })
 
-    console.log(updateFormData)
-
     useEffect(() => {
         fetch(`${id}`)
         .then((res) => {
@@ -64,13 +62,15 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
             setShow(!show)
         }
 
+        const eventName = `${runner.event['name']} - ${runner.event['distance']}${runner.event['unit_of_measurement']}`
+
         return (
             <div>
                 <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
                 <p>Coach: { runner.coach ? runner.coach['full_name'] : null }</p>
-                <p>Latest Event: { runner.coach ? runner.event['name'] : null }</p>
+                <p>Latest Event: { runner.event ? eventName : null }</p>
                 <br/>
                 <br/>
                 <br/>
