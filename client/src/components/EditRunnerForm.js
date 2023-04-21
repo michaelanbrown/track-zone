@@ -14,6 +14,20 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
         });
     }
 
+    function handleCoachChange(e) {
+        setUpdateFormData({
+            ...updateFormData,
+            [e.target.id] : document.getElementById('coach').value
+        });
+    }
+
+    function handleEventChange(e) {
+        setUpdateFormData({
+            ...updateFormData,
+            [e.target.id] : document.getElementById('event').value
+        });
+    }
+
     function updateRunners(updatedRunner) {
         const updatingRunner = runners.map((runner) => {
             if (runner.id === updatedRunner.id) {
@@ -63,11 +77,11 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
     })}
 
     const coachOptions = coaches.map(coach => {
-        return (<option value={coach.full_name} key={coach.id}>{coach.full_name}</option>)
+        return (<option value={coach.id} key={coach.id}>{coach.full_name}</option>)
     })
 
     const eventOptions = events.map(event => {
-        return (<option value={event.name} key={event.id}>{event.name}</option>)
+        return (<option value={event.id} key={event.id}>{event.name}</option>)
     })
 
         return (
@@ -83,11 +97,11 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
                 <br/>
                 Username: <input type="text" id="username" value={updateFormData.username} onChange={handleFormChange} placeholder="Username"/>
                 <br/>
-                Coach: <select>
+                Coach: <select id="coach" onChange={handleCoachChange} defaultValue={runner.coach.id}>
                     {coachOptions}
                 </select>
                 <br/>
-                Event: <select>
+                Event: <select id="event" onChange={handleEventChange} defaultValue={runner.event.id}>
                     {eventOptions}
                 </select>
                 <br/>
