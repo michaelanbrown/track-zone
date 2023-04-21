@@ -17,7 +17,13 @@ class RunnersController < ApplicationController
 
     def create
         runner = Runner.create!(runner_params)
-        render json: runner, status: :ok
+        runner.update(admin: false)
+        if runner&.authenticate(params[:password])
+            session[:runner_id] = runner.id
+            render json: runner, status: :ok
+          else 
+            render json: { error: "Invalid Credentials" }, status: :unauthorized
+          end
     end
 
     def update

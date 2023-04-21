@@ -71,7 +71,7 @@ function App() {
         <Header/>
           <Routes>
             <Route path="/" element={<Welcome/>} />
-            <Route path="/signup" element={<Signup/>} />
+            <Route path="/signup" element={<Signup coaches={coaches} events={events}/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/runners/*" element={<Runner runners={runners} setRunners={setRunners}/>} />
             <Route path="/runners/:id" element={<RunnerShow runners={runners} setRunners={setRunners} coaches={coaches} events={events}/>} />

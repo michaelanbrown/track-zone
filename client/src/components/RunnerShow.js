@@ -28,8 +28,6 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
         admin: ""
     })
 
-    console.log(updateFormData)
-
     useEffect(() => {
         fetch(`${id}`)
         .then((res) => {

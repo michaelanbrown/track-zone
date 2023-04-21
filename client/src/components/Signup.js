@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function Signup() {
+function Signup({ coaches, events }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
@@ -13,9 +13,8 @@ function Signup() {
         password:'',
         age: '',
         photo: '',
-        coach_id: '',
-        event_id: '',
-        admin: false
+        coach_id: 34,
+        event_id: 1
     })
     const {full_name, username, email, password, age, photo, coach_id, event_id} = formData
     const navigate = useNavigate();
@@ -77,10 +76,6 @@ function Signup() {
             Age: <input type='text' name='age' value={age} onChange={handleChange} />
             <br/>
             Photo Link: <input type='text' name='photo' value={photo} onChange={handleChange} />
-            <br/>
-            Coach: <input type='text' name='coach_id' value={coach_id} onChange={handleChange} />
-            <br/>
-            Latest Event: <input type='text' name='event_id' value={event_id} onChange={handleChange} />
             <br/>
             <input type='submit' value='Sign up!' />
         </form>
