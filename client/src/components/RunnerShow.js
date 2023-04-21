@@ -17,6 +17,14 @@ function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }
         coach: "",
         event: ""
     });
+    const [runner, setRunner] = useState({
+        full_name: "",
+        age: "",
+        photo: "",
+        username: "",
+        coach: "",
+        event: ""
+    })
 
     useEffect(() => {
         fetch(`${id}`)
@@ -31,6 +39,13 @@ function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }
                 username: runner.username,
                 coach: runner.coach,
                 event: runner.event})
+                setRunner({...updateFormData,
+                    full_name: runner.full_name,
+                    age: runner.age,
+                    photo: runner.photo,
+                    username: runner.username,
+                    coach: runner.coach,
+                    event: runner.event})
               });
             } else {
                 res.json().then(json => setErrors([json.error]))
@@ -45,11 +60,11 @@ function RunnerShow({ runners, setRunners, filteredRunners, setFilteredRunners }
 
         return (
             <div>
-                <h1 className = "centering">{updateFormData.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
-                <img className = "RunnerCardImg" src={updateFormData.photo} alt={updateFormData.full_name} width="40%" height="40%"/>
-                <p>Age: {updateFormData.age}</p>
-                <p>Coach: { updateFormData.coach ? updateFormData.coach['full_name'] : null }</p>
-                <p>Latest Event: { updateFormData.coach ? updateFormData.event['name'] : null }</p>
+                <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
+                <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
+                <p>Age: {runner.age}</p>
+                <p>Coach: { runner.coach ? runner.coach['full_name'] : null }</p>
+                <p>Latest Event: { runner.coach ? runner.event['name'] : null }</p>
                 <br/>
                 <br/>
                 <br/>

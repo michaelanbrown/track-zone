@@ -3,7 +3,7 @@ class RunnersController < ApplicationController
     before_action :is_authorized?, only: [:update, :destroy]
 
     def index
-        render json: Runner.all, status: :ok
+        render json: Runner.all.order(:id), status: :ok
     end
 
     def show

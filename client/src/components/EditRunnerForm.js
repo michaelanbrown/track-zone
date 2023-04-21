@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
+import { useParams } from "react-router-dom";
 
 function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData, errors, setErrors, show, setShow, filteredRunners, setFilteredRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { id } = useParams();
 
     function handleFormChange(e) {
         setUpdateFormData({
@@ -15,7 +17,7 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
     function updateRunners(updatedRunner) {
         const updatingRunner = runners.map((runner) => {
             if (runner.id === updatedRunner.id) {
-                setCurrentUser(runner)
+                setCurrentUser(currentUser)
                 return updatedRunner
             } else {
                 return runner
@@ -33,7 +35,7 @@ function EditRunnerForm({ runners, setRunners, updateFormData, setUpdateFormData
 
     function handleRunnerChange(e) {
         e.preventDefault();
-        fetch(`${currentUser.id}`, {
+        fetch(`${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type" : "application/json",
