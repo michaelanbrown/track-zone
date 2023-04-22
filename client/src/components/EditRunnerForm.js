@@ -72,7 +72,7 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
                     admin: runner.admin})})
               .then(setShow(!show))
             } else {
-              res.json().then(json => setErrors([json.error]))
+              res.json().then(json => setErrors(json.errors))
             }
     })}
 
@@ -86,6 +86,8 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
 
         return (
             <div>
+                { errors ? errors.map(error => <div className='error' key={error}>{error}</div>) :null }
+                { errors ? <br/> : null }
                 <form onSubmit={handleRunnerChange}>
                 Enter your changes:
                 <br/>
