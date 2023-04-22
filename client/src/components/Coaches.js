@@ -3,7 +3,7 @@ import './App.css';
 import { UserContext } from '../context/Runner';
 
 
-function Coaches() {
+function Coaches({ coahces, setCoaches }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
         return (

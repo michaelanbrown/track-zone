@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-function Events() {
+function Events({ events, setEvents }) {
 
         return (
             <div>Events</div>

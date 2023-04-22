@@ -34,7 +34,7 @@ function RunnerCard( { runner, runners, setRunners }) {
                 <p>Age: {runner.age}</p>
                 <p>Coach: {runner.coach.full_name}</p>
                 <p>Latest Event: {eventName}</p>
-                {currentUser.admin ||currentUser.id == runner.id ? <><Link to={`${runner.id}`}>View Details</Link>
+                {currentUser.admin || currentUser.id == runner.id ? <><Link to={`${runner.id}`}>View Details</Link>
                   <Routes>
                     <Route path={`runners/${runner.id}`} element={<RunnerShow/>}/>
                   </Routes></> : null}

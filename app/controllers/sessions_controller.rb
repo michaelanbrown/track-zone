@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       end
   
     end
-
+    
     def show
       render json: current_runner, status: :ok
     end
