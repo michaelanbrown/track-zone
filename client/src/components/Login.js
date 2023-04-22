@@ -37,7 +37,7 @@ function Login({ getRunners, getCoaches, getEvents }) {
                     getEvents();
                 })
             } else {
-                res.json().then(json => setErrors([json.error]))
+                res.json().then(json => setErrors([json.errors]))
             }
         }) 
     }
@@ -59,7 +59,7 @@ function Login({ getRunners, getCoaches, getEvents }) {
                     <input type="submit" value="Log in" />
                 </form>
                 <br/>
-                {errors ? errors.map(error => <div key={error}>{error}</div>) :null}
+                { errors ? errors.map(error => <div className='error' key={error}>{error}</div>) :null }
             </div>
     )
 }
