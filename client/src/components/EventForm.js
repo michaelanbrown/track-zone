@@ -40,6 +40,17 @@ function EventForm({ events, setEvents }) {
         });
     }
 
+    function handleUnitChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.id] : document.getElementById('unit_of_measurement').value
+        });
+    }
+
+    const unitOptions = ["mi", "km", "m"].map(unit => {
+        return (<option value={unit} key={unit}>{unit}</option>)
+    })
+
         return (
             <> 
             <form onSubmit={onSubmit}>
@@ -47,7 +58,9 @@ function EventForm({ events, setEvents }) {
                 <br/>
                 Distance: <input type='text' name='distance' value={distance} onChange={handleChange} />
                 <br/>
-                Unit of Measurement: <input type='text' name='unit_of_measurement' value={unit_of_measurement} onChange={handleChange} />
+                Unit of Measurement: <select id='unit_of_measurement' onChange={handleUnitChange}>
+                    {unitOptions}
+                </select>
                 <br/>
                 <input type='submit' value='Create an Event!' />
             </form>
