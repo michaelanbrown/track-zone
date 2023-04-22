@@ -15,7 +15,7 @@ function Coaches({ coaches, setCoaches }) {
 
         return (
             <div>
-                <CoachForm />
+                <CoachForm coaches={coaches} setCoaches={setCoaches}/>
                 <div>{coachRender}</div>
             </div>
     )

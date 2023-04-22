@@ -50,8 +50,7 @@ function Signup({ getRunners, getCoaches, getEvents }) {
             }else {
                 res.json().then(json => setErrors(json.errors))
             }
-        })
-       
+        })  
     }
 
     function handleChange(e) {

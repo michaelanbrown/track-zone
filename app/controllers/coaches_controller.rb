@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
     skip_before_action :authenticate_runner, only: [:create, :index]
-    before_action :is_authorized?, only: [:update]
+    before_action :is_authorized?, only: [:update, :destroy]
 
     def index 
         render json: Coach.all, status: :ok
@@ -22,11 +22,11 @@ class CoachesController < ApplicationController
     #     render json: coach, status: :accepted
     # end 
 
-    # def destroy
-    #     coach = Coach.find(params[:id])
-    #     coach.destroy
-    #     head :no_content 
-    # end 
+    def destroy
+        coach = Coach.find(params[:id])
+        coach.destroy
+        head :no_content 
+    end 
 
     private
     
