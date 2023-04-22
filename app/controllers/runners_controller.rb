@@ -17,7 +17,7 @@ class RunnersController < ApplicationController
 
     def create
         runner = Runner.create!(runner_params)
-        runner.update(admin: false)
+        runner.update(admin: false, coach_id: 34, event_id: 1)
         if runner&.authenticate(params[:password])
             session[:runner_id] = runner.id
             render json: runner, status: :ok
