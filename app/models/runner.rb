@@ -7,6 +7,7 @@ class Runner < ApplicationRecord
   validates :event_id, presence: true
   validates :username, presence: true, uniqueness: true
   validates :coach_id, presence: true
+  validates :email, presence: true
 
   has_secure_password
 end
