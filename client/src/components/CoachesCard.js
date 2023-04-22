@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import './App.css';
 import { UserContext } from '../context/Runner';
-import { Link, Routes, Route } from 'react-router-dom';
-import CoachesShow from './CoachesShow';
 
 function CoachesCard({ coach, coaches, setCoaches }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);

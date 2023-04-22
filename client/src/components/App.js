@@ -8,7 +8,6 @@ import Signup from './Signup';
 import Login from './Login';
 import RunnerShow from './RunnerShow';
 import Coaches from './Coaches';
-import CoachesShow from './CoachesShow';
 import Events from './Events';
 import { UserContext } from '../context/Runner';
 
@@ -80,7 +79,6 @@ function App() {
             <Route path="/runners/*" element={<Runner runners={runners} setRunners={setRunners}/>} />
             <Route path="/runners/:id" element={<RunnerShow runners={runners} setRunners={setRunners} coaches={coaches} events={events}/>} />
             <Route path="/coaches" element={<Coaches coaches={coaches} setCoaches={setCoaches}/>} />
-            <Route path="/coaches/:id" element={<CoachesShow/>} />
             <Route path="/events" element={<Events events={events} setEvents={setEvents}/>} />
           </Routes>
     </main>
