@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function CoachesCard( {  }) {
+function EventCard( {  }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
         return (
-            <div>Coach
+            <div>Event
             </div>
     )
 }
 
-export default CoachesCard;
+export default EventCard;
