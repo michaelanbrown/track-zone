@@ -7,7 +7,7 @@ function EventForm({ events, setEvents }) {
 
         return (
             <> 
-            Event
+            EventForm
             </>
     )
 }

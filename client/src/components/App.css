@@ -78,3 +78,9 @@ p {
   color: rgb(156, 13, 13);
   font-weight: bold;
 }
+
+.eventLis{
+  text-align: left;
+  margin-left: 39%;
+  margin-right: 39%;
+}

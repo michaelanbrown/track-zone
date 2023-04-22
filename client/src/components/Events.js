@@ -9,13 +9,15 @@ function Events({ events, setEvents }) {
 
     const eventRender = events.map (event => {
         return (
-            <EventCard events={events} event={event} key={event.id} setEvents={setEvents} />
+            <EventCard event={event} key={event.id}/>
         )
     })
 
         return (
             <div>
                 <EventForm events={events} setEvents={setEvents}/>
+                <br/>
+                <br/>
                 <div>{eventRender}</div>
             </div>
     )

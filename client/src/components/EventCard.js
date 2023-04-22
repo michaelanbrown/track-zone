@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function EventCard( {  }) {
+function EventCard({ event }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
         return (
-            <div>Event
-            </div>
+        <div>
+            <li className='eventLis'>{event.name} - {event.distance}{event.unit_of_measurement}</li>
+        </div>
     )
 }
 
