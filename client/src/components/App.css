@@ -38,7 +38,7 @@
 }
 
 body{
-  background-color: rgba(233, 194, 156, 0.728);
+  background-color: rgba(242, 209, 179, 0.728);
   text-align: center;
 }
 
@@ -75,5 +75,6 @@ p {
 }
 
 .error {
-  color: rgb(156, 13, 13)
+  color: rgb(156, 13, 13);
+  font-weight: bold;
 }

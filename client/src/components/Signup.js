@@ -48,7 +48,7 @@ function Signup({ getRunners, getCoaches, getEvents }) {
                     getEvents();
                 })
             }else {
-                res.json().then(json => setErrors([json.error]))
+                res.json().then(json => setErrors(json.errors))
             }
         })
        
@@ -84,7 +84,8 @@ function Signup({ getRunners, getCoaches, getEvents }) {
             <br/>
             <input type='submit' value='Sign up!' />
         </form>
-        {errors ? errors.map(error => <div key={error}>{error}</div>) :null}
+        { errors ? <br/> : null }
+        { errors ? errors.map(error => <div className='error' key={error}>{error}</div>) :null }
         </>
     )
 }
