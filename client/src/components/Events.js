@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import './App.css';
-import { UserContext } from '../context/Runner';
 import EventCard from "./EventCard";
 import EventForm from "./EventForm";
 
 function Events({ events, setEvents }) {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
 
     const eventRender = events.map (event => {
         return (

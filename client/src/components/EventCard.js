@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.css';
-import { UserContext } from '../context/Runner';
 
 function EventCard({ event }) {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
 
         return (
         <div>

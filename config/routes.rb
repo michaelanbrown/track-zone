@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :runners
-  resources :events
+  resources :events, only: [:index, :create, :destroy]
   resources :coaches, only: [:index, :create, :destroy]
 
   post "/login", to: "sessions#create" 

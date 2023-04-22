@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
@@ -12,7 +11,6 @@ function CoachForm({ coaches, setCoaches }) {
         photo: ''
     })
     const {full_name, age, photo} = formData
-    const navigate = useNavigate();
 
     function onSubmit(e){
         e.preventDefault()
@@ -30,10 +28,9 @@ function CoachForm({ coaches, setCoaches }) {
             if(res.ok){
                 res.json().then(coach => {
                     setCoaches([...coaches, coach])
-                    navigate(`/coaches/${coach.id}`)
                 })
             } else {
-                res.json().then(json => console.log(json))
+                res.json().then(json => setErrors(Object.entries(json.errors)))
             }
         })  
     }

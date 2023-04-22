@@ -17,12 +17,12 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_runner
-    render json: { errors: {User: "Not Authorized"}}, status: :unauthorized unless current_runner
+    render json: { errors: {User: " Not Authorized"}}, status: :unauthorized unless current_runner
   end
 
   def is_authorized? 
     permitted = current_runner.admin? || current_runner.id == responding_runner.id
-    render json: { errors: {User: "does not have permissions"}}, status: :forbidden unless permitted 
+    render json: { errors: {User: " does not have permissions"}}, status: :forbidden unless permitted 
   end
 
   def render_unprocessable_entity_response(exception)
