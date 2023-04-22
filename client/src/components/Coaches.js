@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
 import CoachesCard from "./CoachesCard";
+import CoachForm from "./CoachForm";
 
 function Coaches({ coaches, setCoaches }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -13,7 +14,10 @@ function Coaches({ coaches, setCoaches }) {
     })
 
         return (
-            <div>{coachRender}</div>
+            <div>
+                <CoachForm />
+                <div>{coachRender}</div>
+            </div>
     )
 }
 
