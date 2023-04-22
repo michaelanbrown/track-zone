@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import './App.css';
 import { UserContext } from '../context/Runner';
+import CoachesCard from "./CoachesCard";
 
-
-function Coaches({ coahces, setCoaches }) {
+function Coaches({ coaches, setCoaches }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
+    const coachRender = coaches.map (coach => {
         return (
-            <div>{currentUser.full_name}</div>
+            <CoachesCard coaches={coaches} coach={coach} key={coach.id} setCoaches={setCoaches} />
+        )
+    })
+
+        return (
+            <div>{coachRender}</div>
     )
 }
 

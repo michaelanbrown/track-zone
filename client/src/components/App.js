@@ -29,6 +29,10 @@ function App() {
           getCoaches();
           getEvents();
         });
+      } else {
+        getRunners();
+        getCoaches();
+        getEvents();
       }
     })
   },[])
