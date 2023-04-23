@@ -15,7 +15,7 @@ function Coaches({ coaches, setCoaches }) {
 
         return (
             <div>
-                <CoachForm coaches={coaches} setCoaches={setCoaches}/>
+                { currentUser ? <CoachForm coaches={coaches} setCoaches={setCoaches}/> : null }
                 <div>{coachRender}</div>
             </div>
     )
