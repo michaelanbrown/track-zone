@@ -62,11 +62,28 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
             setShow(!show)
         }
 
+        function deletedRunner(deleted) {
+            const updatedRunners = runners.filter((currentUser) => currentUser.id !== deleted.id)
+            setRunners(updatedRunners)
+        }
+
+        function handleRunnerDelete() {
+            fetch(`coaches/${currentUser.id}`, {
+                method:"DELETE"
+            })
+            .then(res =>{
+              if(res.ok){
+                deletedRunner(currentUser)
+                setCurrentUser(false)
+              }
+            })
+          }
+
         const eventName = `${runner.event_id['name']} - ${runner.event_id['distance']}${runner.event_id['unit_of_measurement']}`
 
         return (
             <div>
-                {currentUser.id == runner.id ? <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1> : <h1 className = "centering">{runner.full_name}</h1> }
+                <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button>{' '}<button className="edit" onClick={handleRunnerDelete}>🗑️</button></h1>
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
                 <p>Coach: { runner.coach_id ? runner.coach_id['full_name'] : null }</p>
