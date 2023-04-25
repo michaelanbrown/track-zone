@@ -47,7 +47,9 @@ function EventForm({ events, setEvents }) {
         });
     }
 
-    const unitOptions = ["mi", "km", "m"].map(unit => {
+    console.log(errors)
+
+    const unitOptions = ["", "mi", "km", "m"].map(unit => {
         return (<option value={unit} key={unit}>{unit}</option>)
     })
 
@@ -58,14 +60,14 @@ function EventForm({ events, setEvents }) {
                 <br/>
                 Distance: <input type='text' name='distance' value={distance} onChange={handleChange} />
                 <br/>
-                Unit of Measurement: <select id='unit_of_measurement' onChange={handleUnitChange}>
+                Unit of Measurement: <select id='unit_of_measurement' onChange={handleUnitChange} defaultValue={""}>
                     {unitOptions}
                 </select>
                 <br/>
                 <input type='submit' value='Create an Event!' />
             </form>
             { errors ? <br/> : null }
-            { errors ? errors.map(error => <div className='error' key={error}>{error}</div>) :null }
+            { errors ? errors.map(error => <div className='error' key={error}>{error[1]}</div>) :null }
             </>
     )
 }
