@@ -1,18 +1,13 @@
 class RunnersController < ApplicationController
     skip_before_action :authenticate_runner, only: [:create, :index]
-    before_action :is_authorized?, only: [:update]
+    before_action :is_authorized?, only: [:update, :destroy]
 
     def index
         render json: Runner.all.order(:id), status: :ok
     end
 
     def show
-        if current_runner.admin
-            runner = Runner.find(params[:id])
-            render json: runner, status: :ok
-        else
-            render json: current_runner, status: :ok
-        end
+        render json: current_runner, status: :ok
     end
 
     def create
