@@ -13,7 +13,7 @@ function Signup({ getRunners, getCoaches, getEvents }) {
         password:'',
         age: '',
         photo: '',
-        coach_id: 34,
+        coach_id: 4,
         event_id: 1,
         admin: ''
     })

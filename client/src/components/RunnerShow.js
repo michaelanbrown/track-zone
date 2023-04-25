@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import './App.css';
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/Runner';
 import EditRunnerForm from "./EditRunnerForm";
 
 function RunnerShow({ runners, setRunners, coaches, events }) {
-    const { id } = useParams();
+    const navigate = useNavigate();
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [show, setShow] = useState(false)
     const [errors, setErrors] = useState("")
@@ -29,7 +29,7 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
     })
 
     useEffect(() => {
-        fetch(`${id}`)
+        fetch(`${currentUser.id}`)
         .then((res) => {
             if (res.ok) {
               res.json()
@@ -68,13 +68,14 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
         }
 
         function handleRunnerDelete() {
-            fetch(`coaches/${currentUser.id}`, {
+            fetch(`${currentUser.id}`, {
                 method:"DELETE"
             })
             .then(res =>{
               if(res.ok){
                 deletedRunner(currentUser)
                 setCurrentUser(false)
+                navigate(`/`)
               }
             })
           }

@@ -7,22 +7,6 @@ import RunnerShow from './RunnerShow';
 function RunnerCard( { runner, runners, setRunners }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
-    function deletedRunner(deleted) {
-        const updatedRunners = runners.filter((runner) => runner.id !== deleted.id)
-        setRunners(updatedRunners)
-    }
-
-    function handleRunnerDelete() {
-        fetch(`runners/${runner.id}`, {
-            method:"DELETE"
-        })
-        .then(res =>{
-          if(res.ok){
-            deletedRunner(runner)
-          }
-        })
-      }
-
       const eventName = `${runner.event['name']} - ${runner.event['distance']}${runner.event['unit_of_measurement']}`
 
         return (
