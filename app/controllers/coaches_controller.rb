@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
     skip_before_action :authenticate_runner, only: [:index]
-    before_action :is_authorized?, only: [:update, :destroy]
+    before_action :is_admin?, only: [:update, :destroy]
 
     def index 
         render json: Coach.all, status: :ok

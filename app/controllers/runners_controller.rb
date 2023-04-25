@@ -1,6 +1,6 @@
 class RunnersController < ApplicationController
     skip_before_action :authenticate_runner, only: [:create, :index]
-    before_action :is_authorized?, only: [:update, :destroy]
+    before_action :is_authorized?, only: [:update]
 
     def index
         render json: Runner.all.order(:id), status: :ok
@@ -13,7 +13,7 @@ class RunnersController < ApplicationController
         else
             render json: current_runner, status: :ok
         end
-    end 
+    end
 
     def create
         runner = Runner.create!(runner_params)

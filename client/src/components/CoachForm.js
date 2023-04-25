@@ -28,6 +28,11 @@ function CoachForm({ coaches, setCoaches }) {
             if(res.ok){
                 res.json().then(coach => {
                     setCoaches([...coaches, coach])
+                    setFormData({
+                        full_name:'',
+                        age: '',
+                        photo: ''
+                    })
                 })
             } else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))

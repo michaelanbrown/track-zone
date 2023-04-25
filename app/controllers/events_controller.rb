@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     skip_before_action :authenticate_runner, only: [:index]
-    before_action :is_authorized?, only: [:destroy]
+    # before_action :is_admin?, only: [:destroy]
 
     def index 
         render json: Event.all, status: :ok
@@ -11,11 +11,11 @@ class EventsController < ApplicationController
         render json: event, status: :created
     end
 
-    def destroy
-        event = Event.find(params[:id])
-        event.destroy
-        head :no_content 
-    end 
+    # def destroy
+    #     event = Event.find(params[:id])
+    #     event.destroy
+    #     head :no_content 
+    # end 
 
     private
     

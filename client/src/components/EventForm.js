@@ -6,7 +6,7 @@ function EventForm({ events, setEvents }) {
     const [formData, setFormData] = useState({
         name:'',
         distance: '',
-        unit_of_measurement: ''
+        unit_of_measurement: ""
     })
     const {name, distance, unit_of_measurement} = formData
 
@@ -26,6 +26,11 @@ function EventForm({ events, setEvents }) {
             if(res.ok){
                 res.json().then(event => {
                     setEvents([...events, event])
+                    setFormData({
+                        name:'',
+                        distance: '',
+                        unit_of_measurement: ""
+                    })
                 })
             } else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -46,8 +51,6 @@ function EventForm({ events, setEvents }) {
             [e.target.id] : document.getElementById('unit_of_measurement').value
         });
     }
-
-    console.log(errors)
 
     const unitOptions = ["", "mi", "km", "m"].map(unit => {
         return (<option value={unit} key={unit}>{unit}</option>)
