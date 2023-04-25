@@ -66,7 +66,7 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
 
         return (
             <div>
-                <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1>
+                {currentUser.id == runner.id ? <h1 className = "centering">{runner.full_name}{' '}<button className="edit" onClick={showClick}>✏️</button></h1> : <h1 className = "centering">{runner.full_name}</h1> }
                 <img className = "RunnerCardImg" src={runner.photo} alt={runner.full_name} width="40%" height="40%"/>
                 <p>Age: {runner.age}</p>
                 <p>Coach: { runner.coach_id ? runner.coach_id['full_name'] : null }</p>
