@@ -18,7 +18,7 @@ function Events({ events, setEvents }) {
 
         return (
             <div>
-                { currentUser ? <EventForm events={events} setEvents={setEvents}/> : null }
+                <EventForm events={events} setEvents={setEvents}/>
                 <br/>
                 <br/>
                 <div>{eventRender}</div>

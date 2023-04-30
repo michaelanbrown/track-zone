@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    skip_before_action
+    skip_before_action :authenticate_runner
     # before_action :is_admin?, only: [:destroy]
 
     def index 
