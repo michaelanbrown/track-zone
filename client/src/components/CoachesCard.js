@@ -21,7 +21,9 @@ function CoachesCard({ coach, coaches, setCoaches }) {
         })
       }
 
-    const adminUser = currentUser.admin && coach.full_name != "New Runner - Pick a Coach" ? <h1>{coach.full_name}{' '}<button className="edit" onClick={handleCoachDelete}>🗑️</button></h1> : (coach.full_name != "New Runner - Pick a Coach" ? <h1>{coach.full_name}</h1> : null)
+    const coachEvents = coach.events.map(event => <li key={event.id}>{event.name} - {event.distance}{event.unit_of_measurement}</li>)
+
+    const adminUser = currentUser.admin ? <h1>{coach.full_name}{' '}<button className="edit" onClick={handleCoachDelete}>🗑️</button></h1> : (coach.full_name != "New Runner - Pick a Coach" ? <h1>{coach.full_name}</h1> : null)
 
         return (
         <div>
@@ -29,6 +31,7 @@ function CoachesCard({ coach, coaches, setCoaches }) {
             <img className = "RunnerCardImg" src={coach.photo} alt={coach.full_name} width="40%" height="40%"/>
             <p>Name: {coach.full_name}</p>
             <p>Age: {coach.age}</p>
+            <p>{coachEvents}</p>
             <br/>
             <br/>
             <br/>

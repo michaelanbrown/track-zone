@@ -78,10 +78,10 @@ function Signup({ getRunners, getCoaches, getEvents, coaches, events }) {
         return (<option value={coach.id} key={coach.id ? coach.id : ""}>{coach.full_name}</option>)
     })
 
-    const eventOptions = ["",...events].map(event => {
-        return (<option value={event.id} key={event.id ? event.id : ""}>{event.name}  {event.distance}{event.unit_of_measurement}</option>)
+    const eventOptions = events.map(event => {
+        return (<option value={event.id} key={event.id ? event.id : ""}>{event.name} - {event.distance}{event.unit_of_measurement}</option>)
     })
-
+console.log(errors)
     return (
         <> 
         <form onSubmit={onSubmit}>
@@ -108,6 +108,7 @@ function Signup({ getRunners, getCoaches, getEvents, coaches, events }) {
             </select>
             <br/>
             Event: <select id="event_id" onChange={handleEventChange}>
+                <option value="" key="">{' '}</option>
                 {eventOptions}
             </select>
             <br/>
