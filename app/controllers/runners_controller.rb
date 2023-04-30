@@ -33,6 +33,7 @@ class RunnersController < ApplicationController
 
     def destroy
         runner = Runner.find(params[:id])
+        session.delete(:runner_id)
         runner.destroy
         head :no_content 
     end 
