@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { UserContext } from '../context/Runner';
 
-function Signup({ getRunners, getCoaches, getEvents }) {
+function Signup({ getRunners, getCoaches, getEvents, coaches, events }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
@@ -60,6 +60,28 @@ function Signup({ getRunners, getCoaches, getEvents }) {
         });
     }
 
+    function handleCoachChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.id] : document.getElementById('coach_id').value
+        });
+    }
+
+    function handleEventChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.id] : document.getElementById('event_id').value
+        });
+    }
+
+    const coachOptions = ["", ...coaches].map(coach => {
+        return (<option value={coach.id} key={coach.id ? coach.id : ""}>{coach.full_name}</option>)
+    })
+
+    const eventOptions = ["",...events].map(event => {
+        return (<option value={event.id} key={event.id ? event.id : ""}>{event.name}  {event.distance}{event.unit_of_measurement}</option>)
+    })
+
     return (
         <> 
         <form onSubmit={onSubmit}>
@@ -80,6 +102,14 @@ function Signup({ getRunners, getCoaches, getEvents }) {
             Age: <input type='text' name='age' value={age} onChange={handleChange} />
             <br/>
             Photo Link: <input type='text' name='photo' value={photo} onChange={handleChange} />
+            <br/>
+            Coach: <select id="coach_id" onChange={handleCoachChange}>
+                {coachOptions}
+            </select>
+            <br/>
+            Event: <select id="event_id" onChange={handleEventChange}>
+                {eventOptions}
+            </select>
             <br/>
             <input type='submit' value='Sign up!' />
         </form>
