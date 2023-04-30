@@ -1,5 +1,5 @@
 class CoachesController < ApplicationController
-    skip_before_action :authenticate_runner, only: [:index]
+    skip_before_action :authenticate_runner, only: [:index, :create]
     before_action :is_admin?, only: [:update, :destroy]
 
     def index 
