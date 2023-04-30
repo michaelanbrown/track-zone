@@ -6,10 +6,10 @@ class CoachesController < ApplicationController
         render json: Coach.all, status: :ok
     end
 
-    def show
-        coach = Coach.find(params[:id])
-        render json: coach, status: :ok
-    end
+    # def show
+    #     coach = Coach.find(params[:id])
+    #     render json: coach, status: :ok
+    # end
 
     def create
         coach = Coach.create!(coach_params)
