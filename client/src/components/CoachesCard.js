@@ -26,12 +26,12 @@ function CoachesCard({ coach, coaches, setCoaches }) {
         return (
         <div>
             {adminUser}
-            {coach.full_name != "New Runner - Pick a Coach" ? <img className = "RunnerCardImg" src={coach.photo} alt={coach.full_name} width="40%" height="40%"/> : null}
-            {coach.full_name != "New Runner - Pick a Coach" ? <p>Name: {coach.full_name}</p> : null}
-            {coach.full_name != "New Runner - Pick a Coach" ? <p>Age: {coach.age}</p> : null}
-            {coach.full_name != "New Runner - Pick a Coach" ? <br/> : null }
-            {coach.full_name != "New Runner - Pick a Coach" ? <br/> : null }
-            {coach.full_name != "New Runner - Pick a Coach" ? <br/> : null }
+            <img className = "RunnerCardImg" src={coach.photo} alt={coach.full_name} width="40%" height="40%"/>
+            <p>Name: {coach.full_name}</p>
+            <p>Age: {coach.age}</p>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }
