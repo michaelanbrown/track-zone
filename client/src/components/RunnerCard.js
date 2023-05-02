@@ -4,7 +4,7 @@ import { UserContext } from '../context/Runner';
 import { Link, Routes, Route } from 'react-router-dom';
 import RunnerShow from './RunnerShow';
 
-function RunnerCard( { runner, runners, setRunners }) {
+function RunnerCard( { runner }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
       const eventName = `${runner.event['name']} - ${runner.event['distance']}${runner.event['unit_of_measurement']}`
