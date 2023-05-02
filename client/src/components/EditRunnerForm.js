@@ -108,8 +108,6 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
                     {eventOptions}
                 </select>
                 <br/>
-                { currentUser.admin ? <>Admin : <input type="text" id="admin" value={updateFormData.admin} onChange={handleFormChange} placeholder="Admin?"/></> : null }
-                <br/>
                 <button className='submit'>Submit Changes</button>
                 </form>
             </div>
