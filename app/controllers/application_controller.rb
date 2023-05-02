@@ -10,11 +10,11 @@ class ApplicationController < ActionController::API
     @current_runner ||= Runner.find_by(id: session[:runner_id])
   end
 
+  private
+
   def responding_runner
     @responding_runner = Runner.find(params[:id])
   end
-
-  private
 
   def authenticate_runner
     render json: { errors: {User: " Not Authorized"}}, status: :unauthorized unless current_runner
