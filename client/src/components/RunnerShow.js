@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/Runner';
 import EditRunnerForm from "./EditRunnerForm";
 
-function RunnerShow({ runners, setRunners, coaches, events }) {
+function RunnerShow({ runners, setRunners, coaches, events, runnerChange, setRunnerChange }) {
     const navigate = useNavigate();
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [show, setShow] = useState(false)
@@ -92,7 +92,7 @@ function RunnerShow({ runners, setRunners, coaches, events }) {
                 <br/>
                 <br/>
                 <br/>
-                {show ? <EditRunnerForm runner={runner} setRunner={setRunner} runners={runners} setRunners={setRunners} coaches={coaches} events={events} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData}/> : null }
+                {show ? <EditRunnerForm runner={runner} setRunner={setRunner} runners={runners} setRunners={setRunners} coaches={coaches} events={events} errors={errors} setErrors={setErrors} show={show} setShow={setShow} updateFormData={updateFormData} setUpdateFormData={setUpdateFormData} runnerChange={runnerChange} setRunnerChange={setRunnerChange}/> : null }
             </div>
     )
 }

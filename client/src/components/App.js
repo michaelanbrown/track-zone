@@ -17,6 +17,7 @@ function App() {
   const [coaches, setCoaches] = useState([])
   const [events, setEvents] = useState([])
   const [errors, setErrors] = useState(false)
+  const [runnerChange, setRunnerChange] = useState(false)
   useEffect(() => {
     fetch("/authorized_user")
     .then((res) => {
@@ -34,7 +35,7 @@ function App() {
         getEvents();
       }
     })
-  },[currentUser])
+  },[runnerChange])
 
   function getRunners() {
     fetch("/runners")
@@ -77,7 +78,7 @@ function App() {
             <Route path="/signup" element={<Signup coaches={coaches} events={events} getRunners={getRunners} getCoaches={getCoaches} getEvents={getEvents}/>} />
             <Route path="/login" element={<Login getRunners={getRunners} getCoaches={getCoaches} getEvents={getEvents}/>} />
             <Route path="/runners/*" element={<Runner runners={runners}/>} />
-            <Route path="/runners/:id" element={<RunnerShow runners={runners} setRunners={setRunners} coaches={coaches} events={events}/>} />
+            <Route path="/runners/:id" element={<RunnerShow runners={runners} setRunners={setRunners} coaches={coaches} events={events} runnerChange={runnerChange} setRunnerChange={setRunnerChange}/>} />
             <Route path="/coaches" element={<Coaches coaches={coaches} setCoaches={setCoaches}/>} />
             <Route path="/events" element={<Events events={events} setEvents={setEvents}/>} />
           </Routes>

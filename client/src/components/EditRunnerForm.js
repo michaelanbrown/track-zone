@@ -3,7 +3,7 @@ import './App.css';
 import { UserContext } from '../context/Runner';
 import { useParams } from "react-router-dom";
 
-function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, events, updateFormData, setUpdateFormData, errors, setErrors, show, setShow }) {
+function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, events, updateFormData, setUpdateFormData, errors, setErrors, show, setShow, runnerChange, setRunnerChange }) {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const { id } = useParams();
 
@@ -71,6 +71,7 @@ function EditRunnerForm({ runner, setRunner, runners, setRunners, coaches, event
                     event_id: runner.event,
                     admin: runner.admin})})
               .then(setShow(!show))
+              .then(setRunnerChange(!runnerChange))
             } else {
               res.json().then(json => setErrors(json.errors))
             }
