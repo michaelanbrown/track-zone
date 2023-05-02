@@ -13,8 +13,8 @@ function Signup({ getRunners, getCoaches, getEvents, coaches, events }) {
         password:'',
         age: '',
         photo: '',
-        coach_id: 4,
-        event_id: 1,
+        coach_id: '',
+        event_id: '',
         admin: ''
     })
     const {full_name, username, email, password, age, photo, coach_id, event_id, admin} = formData
@@ -81,7 +81,7 @@ function Signup({ getRunners, getCoaches, getEvents, coaches, events }) {
     const eventOptions = events.map(event => {
         return (<option value={event.id} key={event.id ? event.id : ""}>{event.name} - {event.distance}{event.unit_of_measurement}</option>)
     })
-console.log(errors)
+
     return (
         <> 
         <form onSubmit={onSubmit}>
